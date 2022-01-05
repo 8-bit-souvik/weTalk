@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Official bloging site">
+    <meta name="keywords" content="Blog, Tech, Dev">
+    <meta name="author" content="Souvik Mandal">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/style.css">
+    <link rel="stylesheet" href="/public/modalpost.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo"><img alt="image" height="50px" width="50px" src="/public/icons/wetalk_logo.png"></div>
+        <div class="searchbox"> <input placeholder="search" type="search"><button><img alt="image"
+                    src="/public/icons/search.png" alt="search"></button> </div>
+        <div class="icons">
+            <a href="new_post" class="create_new"
+                style="text-decoration: none; font-weight: 600; font-size: 22px; border: rgb(194, 215, 233) 1px solid; border-radius: 5px; background-color: rgb(135, 181, 222);"><img
+                    alt="image" src="/public/icons/new_post.png" alt="create new" width="30px"> create post</a>
+            <a class="sub-navs"><img alt="image" src="/public/icons/Hamburger.png" alt="" width="30px"></a>
+        </div>
+    </header>
+
+    <br>
+    <br>
+    <br>
+
+    <section class="body">
+
+
+        <section class="menu">
+            <div class="collapsible"><img id="arrow" src="/public/icons/angle-right-solid.svg" height="30px"
+                    alt="arrow">
+            </div>
+
+            <a href="/home">
+                <div style="  background-color: rgb(211, 188, 170); border-radius: 10px;">Home</div>
+            </a>
+
+
+            <a href="/about">
+                <div>About</div>
+            </a>
+
+            <a href="https://github.com/<%= userData.github_ID %>">
+                <div>My Account</div>
+            </a>
+
+            <a href="/logout">
+                <div>Logout</div>
+            </a>
+
+        </section>
+
+
+        <section class="news_feed" id="news_feed">
+
+            <section></section>
+
+            <a href="/new_post" style="height: 40px; text-decoration: none;">
+                <div id="post" style="text-align: center;"><b>Post your Thoughts</b></div>
+            </a>
+
+
+
+
+
+        </section>
+        <section class="extension">
+
+
+            <div class="profile"></div>
+        </section>
+    </section>
+
+
+
+    
+    <!-- <div class="popup_button"></div> -->
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+
+        <div class="modal-content">
+            <div class="close_exp">X</div>
+            <p>.</p>
+            <br>
+
+
+            <div class="exp_content">
+                <div class="exp_post">
+                    <br>
+                    <div id="post" class="extp">
+                        
+                    </div>
+                    <br>
+                </div>
+                <div class="exp_other">
+                    <br>
+                    <div class="new_comment">
+                        <div class="exp_author">
+                            <div class="exp_author_img"><img src="<%= userData.profile_img %>" height="35px"
+                                    width="35px" style="border-radius: 50%; border: 1px rgb(142, 142, 142) solid;">
+                            </div>
+                            <div class="exp_author_name">
+                                <%= userData.name %>
+                            </div>
+                        </div>
+                        <div class="new_comment_box">
+                            <textarea class="write_new_comment" placeholder="write comment"></textarea>
+                            <img class="post_new_comment" src="/public/icons/post_comment.png" height="25px">
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="loader_area">
+                        <div class="loader"></div>
+                    </div>
+
+                    <div class="prev_comments">
+
+
+                        
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <div id="del_myModal" class="del_modal">
+
+        <div class="del_modal-content" id="0">
+            Are you sure you want to delete this?
+            <br>
+            <br>
+            <br>
+            <div class="del_modal_options">
+                <div class="del_close">Close</div>
+                <div class="del_delete">Delete</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+    </script>
+
+
+
+</body>
+
+<script src="/public/script.js"></script>
+<script src="/public/newsfeed.js"></script>
+<script src="/public/modalpost.js"></script>
+<script src="/public/sortmodal.js"></script>
+
+<script>
+
+</script>
+
+</html>
