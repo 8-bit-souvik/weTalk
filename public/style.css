@@ -106,6 +106,7 @@
     /* position: fixed; */
     left: 0px;
     box-shadow: grey 1px 0 15px;
+    transition-duration: .3s;
 }
 
 .news_feed{
