@@ -12,7 +12,7 @@ const clientID = 'ab5a6c0de98d1acb22f8'
 
 router.get('/', verify, function (req, res) {
     if (req.headers.verified) {
-        return res.redirect('pages/home', { client_id: clientID });
+        return res.redirect('/home');
          
     } else {
         return res.render('pages/index', { client_id: clientID });
