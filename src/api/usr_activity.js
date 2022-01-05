@@ -250,7 +250,6 @@ router.get('/show', verify, function (req, res) {
     }
 })
 
-console.log();
 
 router.post('/comment', verify, (req, res) => {
     if (req.headers.verified) {
