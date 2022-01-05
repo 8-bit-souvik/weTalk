@@ -36,7 +36,7 @@ var comment_action = {
 
     get_comments: (e) => {
         // console.log(e);
-        document.querySelector(".loader_area").style.display = "visible";
+        document.querySelector(".loader_area").style.display = "flex";
         fetch("https://wetalk021.herokuapp.com/activity/onpost/showcomments", {
             "method": "GET",
             "headers": {
