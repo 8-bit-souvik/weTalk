@@ -479,7 +479,7 @@ cursor: pointer;
 .loader_area{
     display: flex;
     justify-content: center;
-    padding-bottom: 45px;
+    padding-bottom: 70px;
 }
 
 .loader {
