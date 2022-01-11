@@ -22,6 +22,24 @@ router.get('/', verify, function (req, res) {
 })
 
 
+router.get('/show', verify, function (req, res) {
+    if (req.headers.verified) {
+        res.status(200).send({ msg: "server is working! you are verified!" })
+    } else {
+        res.status(404).send({ msg: "server is working! But you are not verified" })
+    }
+})
+
+
+router.post('/save', verify, function (req, res) {
+    if (req.headers.verified) {
+        res.status(200).send({ msg: "server is working! you are verified!" })
+    } else {
+        res.status(404).send({ msg: "server is working! But you are not verified" })
+    }
+})
+
+
 
 
 module.exports = router;
