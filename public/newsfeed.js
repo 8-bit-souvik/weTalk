@@ -55,7 +55,7 @@ var user = {
     let news_feed = document.querySelector("#news_feed")
     news_feed.appendChild(loader);
 
-    fetch(process.env.hostURL+"activity/onpost/show", {
+    fetch("https://wetalk021.herokuapp.com/activity/onpost/show", {
       "method": "GET",
       "headers": {
         "key": "12345",
