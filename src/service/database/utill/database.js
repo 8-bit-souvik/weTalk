@@ -1,5 +1,5 @@
 
-const mongoAddress = 'mongodb+srv://8bitsouvik:SBlUpd26oz0Lhmkx@cluster0.jig07.mongodb.net/sampleBlog?retryWrites=true&w=majority'
+const mongoAddress =  process.env.mongoAddress
 
 const mongoose = require("mongoose");
 const connection = mongoose.createConnection(

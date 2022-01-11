@@ -4,10 +4,9 @@ const axios = require('axios');
 
 const verify = require('./../service/verify')
 
-// require("dotenv").config({ path: `${__dirname}/../../.env` });
-// const clientID = process.env.clientID
 
-const clientID = 'ab5a6c0de98d1acb22f8'
+const clientID = process.env.clientID
+
 
 
 router.get('/', verify, function (req, res) {

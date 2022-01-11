@@ -8,13 +8,10 @@ const app = express();
 app.use(cookieParser());
 
 
-// require("dotenv").config({ path: `${__dirname}/../../.env` });
-// const passphrase = process.env.passphrase
-// const JWT_token = process.env.JWT_token
+const passphrase = process.env.passphrase
+const JWT_token = process.env.JWT_token
 
 
-const passphrase = '94cr378923er7ferywsz9i1213a1w2v'
-const JWT_token = '8rymk45y4w304u8p59q7wr6zcv2jh87'
 
 
 const AES = require('crypto-js/aes');

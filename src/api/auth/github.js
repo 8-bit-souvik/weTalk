@@ -4,17 +4,12 @@ const usr_sign = require('./../../service/usr_sign')
 const AES = require('crypto-js/aes');
 const jwt = require('jsonwebtoken');
 
-// require("dotenv").config({ path: `${__dirname}/../../../.env` });
 
-// const passphrase = process.env.passphrase
-// const JWT_token = process.env.JWT_token
-// const clientID = process.env.clientID
-// const clientSecret = process.env.clientSecret
+const passphrase = process.env.passphrase
+const JWT_token = process.env.JWT_token
+const clientID = process.env.clientID
+const clientSecret = process.env.clientSecret
 
-const passphrase = '94cr378923er7ferywsz9i1213a1w2v'
-const JWT_token = '8rymk45y4w304u8p59q7wr6zcv2jh87'
-const clientID = 'ab5a6c0de98d1acb22f8'
-const clientSecret = '54067a399d1fc3971ea0fb251099729e392d5598'
 
 
 const encryptWithAES = (text, passphrase) => {
