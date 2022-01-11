@@ -35,7 +35,7 @@ app.use("/auth", require('./src/api/auth/auth'));
 
 app.use("/activity/onpost", require('./src/api/usr_activity'))
 
-app.use("/activity/savepost", require('./src/api/usr_savings'))
+// app.use("/activity/savepost", require('./src/api/usr_savings'))
 
 app.post("/test", (req, res) => {
     console.log(req.body);
