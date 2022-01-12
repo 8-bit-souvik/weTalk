@@ -361,7 +361,10 @@ router.get('/showcomments', verify, (req, res) => {
             })
             .select('comment')
             .exec(temp = (err, comments) => {
-                // console.log(comments[0]);
+                console.log("post ID :-");
+                console.log(req.headers.post_id);
+                console.log("comments : -");
+                console.log(comments);
                 if (comments[0]) {
                     return prepareData(comments[0].comment);
                     // return res.send(comments[0].comment);
