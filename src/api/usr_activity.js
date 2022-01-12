@@ -120,7 +120,7 @@ router.post('/create', verify, function (req, res) {
 
 
 router.get('/show', verify, function (req, res) {
-    if (req.headers.verified) {
+    // if (req.headers.verified) {
 
         var person_detail = (data) => {
             //  console.log(data);
@@ -244,10 +244,10 @@ router.get('/show', verify, function (req, res) {
             get_news()
         }
 
-    }
-    else {
-        return res.status(401).send({ msg: "authentication error" })
-    }
+    // }
+    // else {
+    //     return res.status(401).send({ msg: "authentication error" })
+    // }
 })
 
 

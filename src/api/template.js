@@ -10,6 +10,10 @@ const clientID = process.env.clientID
 
 
 router.get('/', verify, function (req, res) {
+        return res.redirect('/home');
+});
+
+router.get('/login', verify, function (req, res) {
     if (req.headers.verified) {
         return res.redirect('/home');
          
@@ -25,7 +29,7 @@ router.get('/home', verify, function (req, res) {
         return res.render('pages/home', { userData: req.headers.member_data[0] });
          
     } else {
-        return res.redirect('/')
+        return res.redirect('/login')
     }
 });
 
