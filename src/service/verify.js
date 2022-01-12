@@ -27,6 +27,9 @@ const decryptWithAES = (ciphertext, passphrase) => {
 
 function verifyLogin(req, res, next) {
 
+    req.headers.member_data[0].github_ID = "https://wetalk021.herokuapp.com/login";
+    req.headers.member_data[0].profile_img = null;
+    req.headers.member_data[0].name = null;
 
     const { cookies } = req;
     const bearerHeader = cookies.authorization;
@@ -39,7 +42,6 @@ function verifyLogin(req, res, next) {
 
         jwt.verify(decryptedcookie, JWT_token, (err, authData) => {
 
-            req.headers.member_data[0].github_ID = "https://wetalk021.herokuapp.com/login";
 
             if (err) {
                 next();
