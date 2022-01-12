@@ -1,6 +1,6 @@
 
-// var hostURL = 'https://localhost:5510'
-var hostURL = 'https://wetalk021.herokuapp.com/'
+// // var hostURL = 'https://localhost:5510'
+// var hostURL = 'https://wetalk021.herokuapp.com/'
 
 
 var delete_action = {
