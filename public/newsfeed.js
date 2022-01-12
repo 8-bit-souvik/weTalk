@@ -1,12 +1,15 @@
 var sequence = 0;
 
 
+// var hostURL = 'https://localhost:5510'
+var hostURL = 'https://wetalk021.herokuapp.com/'
+
 
 var user = {
   like: (e) => {
     // console.log(`liked: ${e.firstChild.src}`);
 
-    if (e.firstChild.src == "https://wetalk021.herokuapp.com/public/icons/liked.png") {
+    if (e.firstChild.src == `${hostURL}public/icons/liked.png`) {
       like_button = "/public/icons/like.png"
       e.firstChild.src = like_button;
     } else {
@@ -20,7 +23,7 @@ var user = {
       post_id = e.parentNode.parentNode.parentNode.parentNode.parentNode.id;
     }
 
-    fetch("https://wetalk021.herokuapp.com/activity/onpost/like", {
+    fetch(`${hostURL}activity/onpost/like`, {
       "method": "PUT",
       "headers": {
         "key": "12345",
@@ -56,7 +59,7 @@ var user = {
     let news_feed = document.querySelector("#news_feed")
     news_feed.appendChild(loader);
 
-    fetch("https://wetalk021.herokuapp.com/activity/onpost/show", {
+    fetch(`${hostURL}activity/onpost/show`, {
       "method": "GET",
       "headers": {
         "key": "12345",

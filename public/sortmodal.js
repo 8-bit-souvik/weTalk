@@ -1,10 +1,14 @@
 
+// var hostURL = 'https://localhost:5510'
+var hostURL = 'https://wetalk021.herokuapp.com/'
+
+
 var delete_action = {
 
     delete_post: (target) => {
         // console.log("deleting post... \n");
 
-        fetch("https://wetalk021.herokuapp.com/activity/onpost/delete_post", {
+        fetch(`${hostURL}activity/onpost/delete_post`, {
             "method": "DELETE",
             "headers": {
                 "key": "12345",
@@ -29,7 +33,7 @@ var delete_action = {
     delete_comment: (target, comment_id) => {
         // console.log("deleting comment... \n");
 
-        fetch("https://wetalk021.herokuapp.com/activity/onpost/delete_comment", {
+        fetch(`${hostURL}activity/onpost/delete_comment`, {
             "method": "DELETE",
             "headers": {
                 "key": "12345",

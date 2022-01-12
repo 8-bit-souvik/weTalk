@@ -5,10 +5,14 @@ var content = document.getElementsByClassName("content");
 
 
 
+// var hostURL = 'https://localhost:5510'
+var hostURL = 'https://wetalk021.herokuapp.com/'
+
+
 var comment_action = {
 
     post_comment: (target, comment) => {
-        fetch("https://wetalk021.herokuapp.com/activity/onpost/comment", {
+        fetch(`${hostURL}/activity/onpost/comment`, {
             "method": "POST",
             "headers": {
                 "key": "12345",
@@ -38,7 +42,7 @@ var comment_action = {
     get_comments: (e) => {
         // console.log(e);
         document.querySelector(".loader_area").style.display = "flex";
-        fetch("https://wetalk021.herokuapp.com/activity/onpost/showcomments", {
+        fetch(`${hostURL}/activity/onpost/showcomments`, {
             "method": "GET",
             "headers": {
                 "key": "12345",
