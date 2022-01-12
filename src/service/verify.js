@@ -31,6 +31,13 @@ function verifyLogin(req, res, next) {
     // req.headers.member_data[0].profile_img = null;
     // req.headers.member_data[0].name = null;
 
+    req.headers.member_data = [{
+        github_ID: 'https://wetalk021.herokuapp.com/login',
+        profile_img: null,
+        name: null
+    }]
+
+    console.log(req.headers.member_data);
 
     const { cookies } = req;
     const bearerHeader = cookies.authorization;
@@ -65,26 +72,10 @@ function verifyLogin(req, res, next) {
                                         }
 
                                     } else {
-                                        req.headers.member_data = [{
-                                            github_ID: 'https://wetalk021.herokuapp.com/login',
-                                            profile_img: null,
-                                            name: null
-                                        }]
-
-                                        console.log(req.headers.member_data);
-
                                         return next();
                                     }
                                 })
                         } else {
-                            req.headers.member_data = [{
-                                github_ID: 'https://wetalk021.herokuapp.com/login',
-                                profile_img: null,
-                                name: null
-                            }]
-
-                            console.log(req.headers.member_data);
-
                             return next();
                         }
 
@@ -93,14 +84,6 @@ function verifyLogin(req, res, next) {
         });
 
     } else {
-        req.headers.member_data = [{
-            github_ID: 'https://wetalk021.herokuapp.com/login',
-            profile_img: null,
-            name: null
-        }]
-
-        console.log(req.headers.member_data);
-
         return next();
     }
 }
