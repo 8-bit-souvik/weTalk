@@ -85,7 +85,55 @@ A social media platform using NodeJS
 <img alt="heroku" src="https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white"/>
 
 <br/>
+<br/>
+<br/>
 
+# Local Environment setup 
+
+## Database Building
+
+as mongoDB is used as database therefore install mongoDB and Atlas for your system (if not installed) and <b> create a password to access your database.</b><br/>
+decide a name for your database and build it <br/>
+example: database will be `sampleBlog`<br/>
+
+
+## dotenv file creation
+
+In this dotenv file all keys and credentials for this web app will be stored.<br/>
+Create a file named `.env` at the root of the directory, then fill these data given below:
+```
+PORT = '5510'
+passphrase = 'adhguiewhrh89fgrt6wterg23edg'
+JWT_token = '56t3yde8u23g7d6847e823wr623e'
+clientID = 'fcbda448c36edfee295f'
+clientSecret = 'e33eb5206a91d3dbf55f1252d5bf462819b41dda'
+mongoAddress = 'mongodb://localhost:27017/sampleBlog'
+```
+
+***if you have any other Mongo DataBase replace the given `mongoAddress` URI with your own.**
+
+
+## NPM package installation
+
+Install <b>Node JS</b> to run this program in server side.
+open a terminal and go to it's root directory. <br/>
+type `npm install` to install all NPM libraries mentioned in package.json as dependencies
+
+## Run this app
+
+environment setup is completed.<br/>
+now start the server by running `npm start`<br/>
+go to the browser and type URL `localhost:5510`<br/>
+
+<br/>
+<br/>
+<br/>
+
+<b>for any kind of problem or queries contact me on 
+[Twitter](https://twitter.com/souvik0759) or
+[Linkedin](https://www.linkedin.com/in/souvikmandal20/)</b>
+
+<br>
 
 <img alt="Statistics" src="https://i.ibb.co/gDKhY16/Screenshot-from-2022-01-05-10-07-07.png" width="90%"/> 
 
