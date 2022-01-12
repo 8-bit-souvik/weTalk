@@ -62,6 +62,7 @@ function verifyLogin(req, res, next) {
                                         req.headers.member_data = member_data;
 
                                         if (req.headers.member_data[0].restriction == "none") {
+                                            console.log(req.headers.member_data);
                                             return next();
                                         } else if (req.headers.member_data[0].restriction == "full") {
                                             return res.send("<br><br><h2 style='text-align: center; color: red'>You are restricted!</h2>");
