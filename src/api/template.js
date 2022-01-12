@@ -25,12 +25,12 @@ router.get('/login', verify, function (req, res) {
 
 router.get('/home', verify, function (req, res) {
     // console.log(req.headers.member_data);
-    // if (req.headers.verified) {
+    if (req.headers.verified) {
         return res.render('pages/home', { userData: req.headers.member_data[0] });
          
-    // } else {
-    //     return res.redirect('/login')
-    // }
+    } else {
+        return res.render('pages/home', { userData: null });
+    }
 });
 
 
