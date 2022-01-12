@@ -31,19 +31,12 @@ function verifyLogin(req, res, next) {
     // req.headers.member_data[0].profile_img = null;
     // req.headers.member_data[0].name = null;
 
-    req.headers.member_data = [{
-        github_ID: 'https://wetalk021.herokuapp.com/login',
-        profile_img: null,
-        name: null
-    }]
-
-    console.log(req.headers.member_data);
 
     const { cookies } = req;
     const bearerHeader = cookies.authorization;
 
     // Check if bearer is undefined
-    if (typeof bearerHeader !== 'undefined') {
+    if (typeof bearerHeader != 'undefined') {
         const bearer = bearerHeader.split(' ');
         const decryptedcookie = decryptWithAES(bearer[1], passphrase);
 
@@ -64,7 +57,6 @@ function verifyLogin(req, res, next) {
                                         req.headers.member_data = member_data;
 
                                         if (req.headers.member_data[0].restriction == "none") {
-                                            console.log(req.headers.member_data);
                                             return next();
                                         } else if (req.headers.member_data[0].restriction == "full") {
                                             return res.send("<br><br><h2 style='text-align: center; color: red'>You are restricted!</h2>");
@@ -73,10 +65,26 @@ function verifyLogin(req, res, next) {
                                         }
 
                                     } else {
+                                        req.headers.member_data = [{
+                                            github_ID: 'https://wetalk021.herokuapp.com/login',
+                                            profile_img: null,
+                                            name: null
+                                        }]
+
+                                        console.log(req.headers.member_data);
+
                                         return next();
                                     }
                                 })
                         } else {
+                            req.headers.member_data = [{
+                                github_ID: 'https://wetalk021.herokuapp.com/login',
+                                profile_img: null,
+                                name: null
+                            }]
+
+                            console.log(req.headers.member_data);
+
                             return next();
                         }
 
@@ -85,6 +93,14 @@ function verifyLogin(req, res, next) {
         });
 
     } else {
+        req.headers.member_data = [{
+            github_ID: 'https://wetalk021.herokuapp.com/login',
+            profile_img: null,
+            name: null
+        }]
+
+        console.log(req.headers.member_data);
+
         return next();
     }
 }
