@@ -88,6 +88,10 @@ A social media platform using NodeJS
 <br/>
 <br/>
 
+This application is now remotely hosted <br/>
+ [here is the link](https://wetalk021.herokuapp.com/)
+
+
 # Local Environment setup 
 
 ## Database Building

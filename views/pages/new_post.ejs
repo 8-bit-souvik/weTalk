@@ -34,7 +34,8 @@
 
 
         <section class="menu">
-            <div class="collapsible"><img id="arrow" src="/public/icons/angle-right-solid.svg" height="30px" alt="arrow">
+            <div class="collapsible"><img id="arrow" src="/public/icons/angle-right-solid.svg" height="30px"
+                    alt="arrow">
             </div>
 
             <a href="/home">
@@ -65,7 +66,9 @@
                     <a href="/home">Close</a>
                 </div>
                 <div class="author"><img alt="image" src="<%= userData.profile_img %>">
-                    <span><%= userData.name %></span>
+                    <span>
+                        <%= userData.name %>
+                    </span>
 
                 </div>
                 <textarea class="textarea" id="input" placeholder="Type your thoughts..."></textarea>
@@ -74,7 +77,10 @@
 
                 <div class="warning_msg" style="text-align: center; color: brown; font-weight: 600;"></div>
 
-                <div class="additionals">Add attatchment <div><img src="/public/icons/new_post.png" height="35px"><img src="/public/icons/connections.png" height="40px"> <img src="/public/icons/Hamburger.png" height="40px"></div> </div>
+                <div class="additionals">Add attatchment <div><img src="/public/icons/new_post.png" height="35px"><img
+                            src="/public/icons/connections.png" height="40px"> <img src="/public/icons/Hamburger.png"
+                            height="40px"></div>
+                </div>
 
                 <br>
 
@@ -101,41 +107,45 @@
 <script src="/public/script.js"></script>
 
 <script>
-    var user = {
-  post: function() {
-      let content = document.querySelector("#input").value
-      fetch("https://wetalk021.herokuapp.com/activity/onpost/create", {
-        "method": "POST",
-        "headers": {
-            "key": "12345",
-            "content-type": "application/json"
-        },
-        "body": JSON.stringify({
-           content: content
-        })
-    })
-    .then((Response) => {
-        console.log();
-        if (Response.status == 200) {
-            window.location.href = '/home'
-        } else {
-            return Response.json();
-        }
-    })
-    .then((getData) => {
-        console.log(getData);
-        document.querySelector(".warning_msg").innerHTML = `${getData.msg} <br>`
-    }).catch((err) => {
-          console.log(err);
-          window.location.href = '/login'
-      });
-  }
-}
 
-document.querySelector("#submit").addEventListener("click", (e) => {
-    e.preventDefault()
-    user.post()
-});
+    const hostURL = 'https://localhost:5510'
+    // const hostURL = 'https://wetalk021.herokuapp.com/'
+
+    var user = {
+        post: function () {
+            let content = document.querySelector("#input").value
+            fetch(`${hostURL}activity/onpost/create`, {
+                "method": "POST",
+                "headers": {
+                    "key": "12345",
+                    "content-type": "application/json"
+                },
+                "body": JSON.stringify({
+                    content: content
+                })
+            })
+                .then((Response) => {
+                    console.log();
+                    if (Response.status == 200) {
+                        window.location.href = '/home'
+                    } else {
+                        return Response.json();
+                    }
+                })
+                .then((getData) => {
+                    console.log(getData);
+                    document.querySelector(".warning_msg").innerHTML = `${getData.msg} <br>`
+                }).catch((err) => {
+                    console.log(err);
+                    window.location.href = '/login'
+                });
+        }
+    }
+
+    document.querySelector("#submit").addEventListener("click", (e) => {
+        e.preventDefault()
+        user.post()
+    });
 </script>
 
 </html>
