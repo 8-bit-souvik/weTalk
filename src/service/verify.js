@@ -27,9 +27,15 @@ const decryptWithAES = (ciphertext, passphrase) => {
 
 function verifyLogin(req, res, next) {
 
-    req.headers.member_data[0].github_ID = "https://wetalk021.herokuapp.com/login";
-    req.headers.member_data[0].profile_img = null;
-    req.headers.member_data[0].name = null;
+    // req.headers.member_data[0].github_ID = "https://wetalk021.herokuapp.com/login";
+    // req.headers.member_data[0].profile_img = null;
+    // req.headers.member_data[0].name = null;
+
+    req.headers.member_data = [{
+        github_ID: "https://wetalk021.herokuapp.com/login",
+        profile_img: null,
+        name: null
+    }]
 
     const { cookies } = req;
     const bearerHeader = cookies.authorization;
@@ -49,26 +55,26 @@ function verifyLogin(req, res, next) {
                 Members.find({ login_ID: authData.user.login_ID })
                     .then((member_data) => {
                         if (member_data[0]) {
-                                Activity.find({ login_ID: authData.user.login_ID })
-                                    .then((activity_data) => {
-                                        if (activity_data[0]) {
-                                            req.headers.verified = true;
-                                            req.headers.member_data = member_data;
-                                            
-                                            if (req.headers.member_data[0].restriction == "none") {
-                                                return next();
-                                            } else if (req.headers.member_data[0].restriction == "full") {
-                                                return res.send("<br><br><h2 style='text-align: center; color: red'>You are restricted!</h2>");
-                                            } else {
-                                                return res.send("<br><br><h2 style='text-align: center;'>contact with developer</h2>");
-                                            }
-                                           
-                                        } else {
+                            Activity.find({ login_ID: authData.user.login_ID })
+                                .then((activity_data) => {
+                                    if (activity_data[0]) {
+                                        req.headers.verified = true;
+                                        req.headers.member_data = member_data;
+
+                                        if (req.headers.member_data[0].restriction == "none") {
                                             return next();
+                                        } else if (req.headers.member_data[0].restriction == "full") {
+                                            return res.send("<br><br><h2 style='text-align: center; color: red'>You are restricted!</h2>");
+                                        } else {
+                                            return res.send("<br><br><h2 style='text-align: center;'>contact with developer</h2>");
                                         }
-                                    })
+
+                                    } else {
+                                        return next();
+                                    }
+                                })
                         } else {
-                            return next();                   
+                            return next();
                         }
 
                     })
@@ -76,7 +82,7 @@ function verifyLogin(req, res, next) {
         });
 
     } else {
-        return next(); 
+        return next();
     }
 }
 
