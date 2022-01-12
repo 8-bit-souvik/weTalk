@@ -135,8 +135,8 @@ go to the browser and type URL `localhost:5510`<br/>
 
 <br>
 
-<img alt="Statistics" src="https://i.ibb.co/gDKhY16/Screenshot-from-2022-01-05-10-07-07.png" width="90%"/> 
 
+![Screenshot from 2022-01-12 20-15-33](https://user-images.githubusercontent.com/72222987/149162387-97c6f5d8-cb0a-4146-8fae-12eb4448b2e4.png)
 
 
 
