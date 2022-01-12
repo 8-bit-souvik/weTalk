@@ -2,7 +2,7 @@ const express = require('express');
 const req = require('express/lib/request');
 const router = express.Router();
 const uuid = require('uuid')
-
+console.log();
 const verify = require('./../service/verify')
 const activities = require('./../service/database/models/activities')
 const news_feed = require('./../service/database/models/news_feed')
