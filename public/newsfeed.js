@@ -44,6 +44,7 @@ var user = {
 
       }).catch((err) => {
         console.error(err);
+        window.location.href = '/'
       })
   },
   get_news: function () {
@@ -219,6 +220,7 @@ var user = {
 
       }).catch((err) => {
         console.log(err);
+        window.location.href = '/'
       });
   }
 }

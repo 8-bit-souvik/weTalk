@@ -31,6 +31,7 @@ var comment_action = {
             })
             .catch((err) => {
                 console.error(err);
+                window.location.href = '/'
             })
     },
 
@@ -174,6 +175,10 @@ var comment_action = {
 
                 // return console.log(getData);
 
+            })
+            .catch((err) => {
+                console.error(err);
+                window.location.href = '/'
             })
     }
 

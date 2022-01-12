@@ -22,6 +22,7 @@ var delete_action = {
             })
             .catch((err) => {
                 console.error(err);
+                window.location.href = '/'
             })
     },
 
@@ -47,6 +48,7 @@ var delete_action = {
             })
             .catch((err) => {
                 console.error(err);
+                window.location.href = '/'
             })
     },
 }
