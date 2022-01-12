@@ -5,13 +5,10 @@ var content = document.getElementsByClassName("content");
 
 
 
-
-
-
 var comment_action = {
 
     post_comment: (target, comment) => {
-        fetch(`${hostURL}/activity/onpost/comment`, {
+        fetch(`${hostURL}activity/onpost/comment`, {
             "method": "POST",
             "headers": {
                 "key": "12345",
@@ -43,7 +40,7 @@ var comment_action = {
     get_comments: (e) => {
         // console.log(e);
         document.querySelector(".loader_area").style.display = "flex";
-        fetch(`${hostURL}/activity/onpost/showcomments`, {
+        fetch(`${hostURL}activity/onpost/showcomments`, {
             "method": "GET",
             "headers": {
                 "key": "12345",
