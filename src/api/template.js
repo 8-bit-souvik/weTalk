@@ -25,12 +25,12 @@ router.get('/login', verify, function (req, res) {
 
 router.get('/home', verify, function (req, res) {
     // console.log(req.headers.member_data);
-    if (req.headers.verified) {
+    // if (req.headers.verified) {
         return res.render('pages/home', { userData: req.headers.member_data[0] });
          
-    } else {
-        return res.redirect('/login')
-    }
+    // } else {
+    //     return res.redirect('/login')
+    // }
 });
 
 
@@ -39,19 +39,19 @@ router.get('/new_post', verify, function (req, res) {
         return res.render('pages/new_post', { userData: req.headers.member_data[0] });
          
     } else {
-        return res.redirect('/')
+        return res.redirect('/login')
     }
 });
 
 
 
 router.get('/about', verify, function (req, res) {
-    if (req.headers.verified) {
+    // if (req.headers.verified) {
         return res.render('pages/about', { userData: req.headers.member_data[0] });
          
-    } else {
-        return res.redirect('/')
-    }
+    // } else {
+    //      return res.redirect('/login')
+    // }
 });
 
 
@@ -61,7 +61,7 @@ router.get('/logout', verify, function (req, res) {
        return res.redirect("/");
          
     } else {
-        return res.redirect('/')
+         return res.redirect('/login')
     }
 });
 
