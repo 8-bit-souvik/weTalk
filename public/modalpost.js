@@ -25,6 +25,9 @@ var comment_action = {
         })
             .then((Response) => {
                 // console.log(Response);
+                if (Response.status == 401) {
+                    window.location.href = '/login'
+                }
                 return Response.json();
             })
             .then((data) => {
@@ -35,7 +38,6 @@ var comment_action = {
             })
             .catch((err) => {
                 console.error(err);
-                window.location.href = '/login'
             })
     },
 
@@ -52,6 +54,9 @@ var comment_action = {
         })
             .then((Response) => {
                 // console.log(Response);
+                if (Response.status == 401) {
+                    window.location.href = '/login'
+                }
                 document.querySelector(".loader_area").style.display = "none";
                 return Response.json();
             })
@@ -182,7 +187,6 @@ var comment_action = {
             })
             .catch((err) => {
                 console.error(err);
-                window.location.href = '/login'
             })
     }
 
