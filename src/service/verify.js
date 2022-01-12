@@ -2,7 +2,7 @@ const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const express = require('express');
 const Members = require("./database/models/members");
-const Activity = require("./database/models/activities");
+const activities = require("./database/models/activities");
 
 const app = express();
 app.use(cookieParser());
@@ -55,11 +55,21 @@ function verifyLogin(req, res, next) {
                 Members.find({ login_ID: authData.user.login_ID })
                     .then((member_data) => {
                         if (member_data[0]) {
-                            Activity.find({ login_ID: authData.user.login_ID })
+                            activities.find({ login_ID: authData.user.login_ID })
                                 .then((activity_data) => {
                                     if (activity_data[0]) {
                                         req.headers.verified = true;
                                         req.headers.member_data = member_data;
+
+                                        activities.updateOne(
+                                            { login_ID: authData.user.login_ID },
+                                            { last_access: Date() }
+                                        )
+                                            .then((data) => {
+                                            })
+                                            .catch((err) => {
+                                                console.log(err);
+                                            });
 
                                         if (req.headers.member_data[0].restriction == "none") {
                                             return next();
