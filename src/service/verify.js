@@ -27,17 +27,15 @@ const decryptWithAES = (ciphertext, passphrase) => {
 
 function verifyLogin(req, res, next) {
 
-    // req.headers.member_data[0].github_ID = "https://wetalk021.herokuapp.com/login";
-    // req.headers.member_data[0].profile_img = null;
-    // req.headers.member_data[0].name = null;
 
+    req.headers.verified = false
     req.headers.member_data = [{
         github_ID: null,
         profile_img: null,
         name: null
     }]
 
-    console.log(req.headers.member_data);
+    // console.log(req.headers.member_data);
 
     const { cookies } = req;
     const bearerHeader = cookies.authorization;
