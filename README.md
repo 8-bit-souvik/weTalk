@@ -1,5 +1,5 @@
-# weTalk
-A social media platform using NodeJS 
+# About weTalk
+This is an inter-college social media application where users can interact to each others and share their ideas, doubts or any queries and can do like, comment to others' post.
 
 
 <p align="center">
