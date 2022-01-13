@@ -2,7 +2,7 @@ const express = require('express');
 const req = require('express/lib/request');
 const router = express.Router();
 const uuid = require('uuid')
-console.log();
+
 const verify = require('./../service/verify')
 const activities = require('./../service/database/models/activities')
 const news_feed = require('./../service/database/models/news_feed')
@@ -361,10 +361,6 @@ router.get('/showcomments', verify, (req, res) => {
             })
             .select('comment')
             .exec(temp = (err, comments) => {
-                console.log("post ID :-");
-                console.log(req.headers.post_id);
-                console.log("comments : -");
-                console.log(comments);
                 if (comments[0]) {
                     return prepareData(comments[0].comment);
                     // return res.send(comments[0].comment);

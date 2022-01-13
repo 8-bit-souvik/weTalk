@@ -38,8 +38,8 @@ app.use("/activity/onpost", require('./src/api/usr_activity'))
 app.use("/activity/savepost", require('./src/api/usr_savings'))
 
 app.post("/test", (req, res) => {
-    console.log(req.body);
-    res.status(200).send("done");
+    
+    res.status(200).send(req.body);
 })
 
 app.use("/*", (req, res) => {

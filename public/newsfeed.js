@@ -33,6 +33,9 @@ var user = {
     })
       .then((Response) => {
         // console.log(Response);
+        if (Response.status == 401) {
+          window.location.href = '/login'
+        }
         return Response.json();
       }).then((data) => {
         if (data.count != undefined) {
@@ -47,7 +50,6 @@ var user = {
 
       }).catch((err) => {
         console.error(err);
-        window.location.href = '/login'
       })
   },
   get_news: function () {
@@ -69,7 +71,9 @@ var user = {
     })
       .then((Response) => {
         // console.log(Response);
-
+        if (Response.status == 401) {
+          window.location.href = '/login'
+      }
         return Response.json();
       })
       .then((getData) => {
@@ -223,7 +227,7 @@ var user = {
 
       }).catch((err) => {
         console.log(err);
-        window.location.href = '/login'
+        // window.location.href = '/login'
       });
   }
 }
