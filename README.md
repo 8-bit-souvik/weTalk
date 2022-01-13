@@ -34,7 +34,7 @@ This is an inter-college social media application where users can interact to ea
   </em>
   <br />
   <em>
-    <a href="https://github.com/8-bit-souvik/weTalk">
+    <a href="https://wetalk021.herokuapp.com/">
       Try it!
     </a>
   </em>
