@@ -1,7 +1,7 @@
 var sequence = 0;
 
 
-const hostURL = 'https://localhost:5510'
+const hostURL = 'http://127.0.0.1:5510/'
 // const hostURL = 'https://wetalk021.herokuapp.com/'
 
 
