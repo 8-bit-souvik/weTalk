@@ -3,7 +3,7 @@ This is an inter-college social media application where users can interact to ea
 
 
 <p align="center">
-<img src="https://github.com/8-bit-souvik/weTalk/blob/master/public/icons/wetalk_logo.png" alt="weTalk logo" border="0">
+<img src="https://github.com/8-bit-souvik/weTalk/blob/master/public/icons/wetalk_logo.png" alt="weTalk logo" width="40%" border="0">
 </p>
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
