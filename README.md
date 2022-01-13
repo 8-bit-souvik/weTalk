@@ -3,7 +3,7 @@ A social media platform using NodeJS
 
 
 <p align="center">
-<img src="./public/icons/wetalk_logo.png" alt="weTalk logo" border="0">
+<img src="https://github.com/8-bit-souvik/weTalk/blob/master/public/icons/wetalk_logo.png" alt="weTalk logo" border="0">
 </p>
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
