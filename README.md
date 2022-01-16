@@ -1,9 +1,9 @@
-# weTalk
-A social media platform using NodeJS 
+# About weTalk
+This is an inter-college social media application where users can interact to each others and share their ideas, doubts or any queries and can do like, comment to others' post.
 
 
 <p align="center">
-<img src="./public/icons/wetalk_logo.png" alt="weTalk logo" border="0">
+<img src="https://github.com/8-bit-souvik/weTalk/blob/master/public/icons/wetalk_logo.png" alt="weTalk logo" width="40%" border="0">
 </p>
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ A social media platform using NodeJS
   </em>
   <br />
   <em>
-    <a href="https://github.com/8-bit-souvik/weTalk">
+    <a href="https://wetalk021.herokuapp.com/">
       Try it!
     </a>
   </em>
