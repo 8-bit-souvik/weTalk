@@ -96,12 +96,6 @@ This is an inter-college social media application where users can interact to ea
 
 # Local Environment setup 
 
-## Database Building
-
-as mongoDB is used as database therefore install mongoDB and Atlas for your system (if not installed) and <b> create a password to access your database.</b><br/>
-decide a name for your database and build it <br/>
-example: database will be `sampleBlog`<br/>
-
 
 ## dotenv file creation
 
