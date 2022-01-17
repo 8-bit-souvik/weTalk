@@ -146,7 +146,7 @@ go to the browser and type URL `localhost:5510`<br/>
     
  ## Pull and run containers
  
-   - Run command `sudo docker-compose up` or `sudo docker-compose up -d`([detached mode](https://docs.docker.com/engine/reference/run/#detached-vs-foreground)) to run containers
+   - Run command `sudo docker-compose up` or `sudo docker-compose up -d` ([detached mode](https://docs.docker.com/engine/reference/run/#detached-vs-foreground)) to run containers
    - check those running containers by command: `sudo docker ps`
     
  ## Enjoy it!
