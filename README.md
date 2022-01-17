@@ -156,11 +156,10 @@ go to the browser and type URL `localhost:5510`<br/>
 <br>
 
 <b>for any kind of problem or queries contact me on 
-  <a href="https://www.linkedin.com/in/souvikmandal20/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
-[Twitter](https://twitter.com/souvik0759) or
-    <a href="https://www.linkedin.com/in/souvikmandal20/"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"></a>
-  
-[Linkedin](https://www.linkedin.com/in/souvikmandal20/)</b>
+
+    <a href="https://twitter.com/souvik0759/"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"></a>
+  or
+    <a href="https://www.linkedin.com/in/souvikmandal20/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
 
 DM is open 📩
 
