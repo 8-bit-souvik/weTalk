@@ -140,7 +140,7 @@ go to the browser and type URL `localhost:5510`<br/>
 ## Docker Compose installation
    install docker compose from [here](https://docs.docker.com/compose/install/)
    
-## Get docker-compose:
+## Get docker-compose.yml:
 
    Save the [yml file](https://github.com/8-bit-souvik/weTalk/blob/master/docker-compose.yml) for docker-compose
     
