@@ -83,16 +83,17 @@ This is an inter-college social media application where users can interact to ea
 #### Other:
 
  <img alt="GIT" src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white"/> <img alt="heroku" src="https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white"/>  <img alt="Docker" src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"/>  <img alt="AlpineJS" src="https://img.shields.io/badge/Alpine_Linux-0D597F?style=for-the-badge&logo=alpine-linux&logoColor=white"/> 
+
 <br/>
 <br/>
 
 
-### This application is now remotely hosted <br/>
+###  🌐 This application is now remotely hosted <br/>
 ### 👉 [here is the link](https://wetalk021.herokuapp.com/)
 
 <br/>
 
-### Or try to set it up locally:
+###  💻 Or try to set it up locally:
 
 # Local Environment setup 
 
@@ -129,10 +130,38 @@ go to the browser and type URL `localhost:5510`<br/>
 <br/>
 <br/>
 
-<b>for any kind of problem or queries contact me on 
-[Twitter](https://twitter.com/souvik0759) or
-[Linkedin](https://www.linkedin.com/in/souvikmandal20/)</b>
+###  📦 Or use Docker compose:
 
+# Docker setup (Local Env)
+
+## Docker engine installation
+   install docker engine from [here](https://docs.docker.com/engine/install/)
+   
+## Docker Compose installation
+   install docker compose from [here](https://docs.docker.com/compose/install/)
+   
+## Get docker-compose.yml:
+
+   Save the [yml file](https://github.com/8-bit-souvik/weTalk/blob/master/docker-compose.yml) for docker-compose
+    
+ ## Pull and run containers
+ 
+   - Run command `sudo docker-compose up` or `sudo docker-compose up -d` ([detached mode](https://docs.docker.com/engine/reference/run/#detached-vs-foreground)) to run containers
+   - check those running containers by command: `sudo docker ps`
+    
+ ## Enjoy it!
+ 
+   Go to the browser and type URL `localhost:5510`<br/>
+    
+<br>
+
+<b>for any kind of problem or queries contact me on  &nbsp; <a href="https://twitter.com/souvik0759/"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"></a>  or  <a href="https://www.linkedin.com/in/souvikmandal20/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+
+DM is open 📩
+
+
+
+<br>
 <br>
 
 
