@@ -77,9 +77,21 @@
 
                 <div class="warning_msg" style="text-align: center; color: brown; font-weight: 600;"></div>
 
-                <div class="additionals">Add attatchment <div><img src="/public/icons/new_post.png" height="35px"><img
-                            src="/public/icons/connections.png" height="40px"> <img src="/public/icons/Hamburger.png"
-                            height="40px"></div>
+                <div class="additionals">
+                    <p class="image-viewer">Add attatchment</p>
+
+                    <div>
+                        <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
+                            style="display: none;">
+
+                        <label title="upload image" for="file" style="cursor: pointer;">
+                            <img src="/public/icons/upload-image.png" height="40px">
+                        </label>
+                        <img title="schedule time to post (feature will available soon...)"
+                            src="/public/icons/schedule-time-post.png" height="35px"> <img
+                            title="save as draft (feature will available soon...)"
+                            src="/public/icons/save-as-draft.png " height="35px">
+                    </div>
                 </div>
 
                 <br>
@@ -107,6 +119,11 @@
 <script src="/public/script.js"></script>
 
 <script>
+
+    var loadFile = function (event) {
+        var imageViewer = document.querySelector('.image-viewer');
+        imageViewer.innerHTML = `<img src="${URL.createObjectURL(event.target.files[0])}" height="56px" weight="60px"> X`;
+    };
 
     const hostURL = 'http://127.0.0.1:5510/'
     // const hostURL = 'https://wetalk021.herokuapp.com/'

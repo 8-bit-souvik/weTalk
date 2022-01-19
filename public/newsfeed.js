@@ -174,7 +174,7 @@ var user = {
               var content = document.createElement("div");
               content.setAttribute("class", "content");
               content.setAttribute("onclick", "showModal(this)");
-              content.innerText = item.content;
+              content.innerHTML = item.content;
 
               post.appendChild(content);
 

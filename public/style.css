@@ -5,6 +5,21 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+h1{
+    font-size: 30px;
+    /* unless this h1 size is showing similar like h3 */
+}
+
+code{
+    font-style: oblique;
+    font-weight: 600;
+    color: rgb(43, 39, 39);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #d1d8df;
+    border-radius: 5px;
+    padding: 0 .5ch;
+}
+
 /* about */
 
 ::-webkit-scrollbar {
@@ -491,18 +506,53 @@ cursor: pointer;
     height: 50px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
-  }
+}
+
+
+
+.custom-file-input {
+    color: transparent;
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input::before {
+    content: 'Select some files';
+    color: black;
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+}
+.custom-file-input:hover::before {
+    border-color: black;
+}
+.custom-file-input:active {
+    outline: 0;
+}
+.custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+}
   
-  /* Safari */
-  @-webkit-keyframes spin {
+/* Safari */
+@-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
-  }
+}
   
-  @keyframes spin {
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
+}
 
 
 
