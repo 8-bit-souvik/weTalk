@@ -152,6 +152,10 @@ body {
     color: rgb(86, 86, 86);
 }
 
+#comment-alert-msg{
+    height: 1ch;
+}
+
 .close_exp {
     color: #dadada;
     float: right;

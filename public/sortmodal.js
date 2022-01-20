@@ -45,7 +45,9 @@ var delete_action = {
             })
             .then((data) => {
             //  console.log(data);
-                window.location.href = '/home'
+                // window.location.href = '/home'
+                del_modal.style.display = 'none'
+                comment_action.get_comments(target);
             })
             .catch((err) => {
                 console.error(err);

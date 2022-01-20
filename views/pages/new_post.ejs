@@ -78,7 +78,7 @@
                 <div class="warning_msg" style="text-align: center; color: brown; font-weight: 600;"></div>
 
                 <div class="additionals">
-                    <p class="image-viewer">Add attatchment</p>
+                    <p class="image-viewer">Add Image</p>
 
                     <div>
                         <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
@@ -122,15 +122,18 @@
 
     var loadFile = function (event) {
         var imageViewer = document.querySelector('.image-viewer');
-        imageViewer.innerHTML = `<img src="${URL.createObjectURL(event.target.files[0])}" height="56px" weight="60px"> X`;
+        imageViewer.innerHTML = `<img src="${URL.createObjectURL(event.target.files[0])}" height="56px" weight="60px"> <span title="delete image" style="cursor: pointer; color: brown" onclick="deleteImage()"><b>X</b><span>`;
     };
-
-    const hostURL = 'http://127.0.0.1:5510/'
-    // const hostURL = 'https://wetalk021.herokuapp.com/'
+    function deleteImage() {
+        var imageViewer = document.querySelector('.image-viewer');
+        imageViewer.innerHTML = "Add Image"
+    }
+    
+    // const hostURL = 'http://127.0.0.1:5510/'
+    const hostURL = 'https://wetalk021.herokuapp.com/'
 
     var user = {
-        post: function () {
-            let content = document.querySelector("#input").value
+        post: function (content) {
             fetch(`${hostURL}activity/onpost/create`, {
                 "method": "POST",
                 "headers": {
@@ -160,7 +163,16 @@
 
     document.querySelector("#submit").addEventListener("click", (e) => {
         e.preventDefault()
-        user.post()
+        let content = document.querySelector("#input").value
+
+        if (content.length < 1501 && content.length > 1) {
+            user.post(content)
+        } else {
+            setTimeout(clearAlert, 2500)
+            document.querySelector(".warning_msg").innerHTML = `<p style="color:brown; text-align: center">word limit not matched! (must be within 2-600)</p>`
+        }
+
+        function clearAlert() { document.querySelector(".warning_msg").innerHTML = '' }
     });
 </script>
 

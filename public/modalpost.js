@@ -28,8 +28,9 @@ var comment_action = {
             })
             .then((data) => {
                 comment_action.get_comments(target);
-                document.querySelector(".prev_comments").innerHTML = '';
-                document.querySelector(".write_new_comment").value = "";
+                if (data.msg) {
+                    document.querySelector("#comment-alert-msg").innerHTML = `<p style="color:brown">${data.msg}</p>`
+                }
                 // console.log(data);
             })
             .catch((err) => {
@@ -39,6 +40,8 @@ var comment_action = {
 
     get_comments: (e) => {
         // console.log(e);
+        document.querySelector(".prev_comments").innerHTML = '';
+        document.querySelector(".write_new_comment").value = "";
         document.querySelector(".loader_area").style.display = "flex";
         fetch(`${hostURL}activity/onpost/showcomments`, {
             "method": "GET",
@@ -117,7 +120,7 @@ var comment_action = {
 
                         var content = document.createElement("div");
                         content.setAttribute("class", "comment_content");
-                        content.innerText = item.content;
+                        content.innerHTML = item.content;
 
                         post.appendChild(content);
 
@@ -211,8 +214,15 @@ function showModal(e) {
 document.querySelector(".post_new_comment").addEventListener("click", function () {
     var content = document.querySelector(".write_new_comment").value;
     var target = document.querySelector(".modal-content").id;
+    if (content.length < 600 && content.length > 1) {
+        comment_action.post_comment(target, content)
+    } else {
+        setTimeout(clearAlert, 3000)
+        document.querySelector("#comment-alert-msg").innerHTML = `<p style="color:brown; text-align: center">word limit not matched! (must be within 2-600)</p>`
+    }
 
-    comment_action.post_comment(target, content)
+    function clearAlert() { document.querySelector("#comment-alert-msg").innerHTML = '' }
+
 });
 
 

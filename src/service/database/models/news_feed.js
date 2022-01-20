@@ -16,7 +16,7 @@ const news_feed = new mongoose.Schema({
     content: { type: String },
     media: { type: String },
     like: [],
-    comment: []
+    comment: [{ comment_id: { type: String }, author: { type: String }, data: { type: String }, time: { type: Number }, likes: [{ type: String }] }]
 });
 
 news_feed.pre('validate', function (next) {

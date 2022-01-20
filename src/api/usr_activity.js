@@ -2,6 +2,11 @@ const express = require('express');
 const req = require('express/lib/request');
 const router = express.Router();
 const uuid = require('uuid')
+const marked = require('marked')
+const slugify = require('slugify')
+const createDomPurify = require('dompurify')
+const { JSDOM } = require('jsdom')
+const dompurify = createDomPurify(new JSDOM().window)
 
 const verify = require('./../service/verify')
 const activities = require('./../service/database/models/activities')
@@ -90,7 +95,7 @@ router.post('/create', verify, function (req, res) {
                         // console.log(data);
                     })
                     .catch((err) => {
-                       return console.log(err);
+                        return console.log(err);
                     });
 
 
@@ -102,7 +107,7 @@ router.post('/create', verify, function (req, res) {
                         // console.log(data);
                     })
                     .catch((err) => {
-                       return console.log(err);
+                        return console.log(err);
                     })
 
                 return res.status(200).send({ msg: "posted successfully!" });
@@ -122,127 +127,127 @@ router.post('/create', verify, function (req, res) {
 router.get('/show', verify, function (req, res) {
     // if (req.headers.verified) {
 
-        var person_detail = (data) => {
-            //  console.log(data);
+    var person_detail = (data) => {
+        //  console.log(data);
 
-            var temp;
+        var temp;
 
-            query_field = []
+        query_field = []
 
-            data.forEach((item, index) => {
-                query_field.push(data[index].login_ID)
+        data.forEach((item, index) => {
+            query_field.push(data[index].login_ID)
+        })
+
+
+        members
+            .find({
+                'login_ID': {
+                    $in: query_field
+                }
             })
+            .select('name , github_ID , profile_img , login_ID')
+            .exec(temp = (err, author_data) => {
 
+                newlist = []
 
-            members
-                .find({
-                    'login_ID': {
-                        $in: query_field
+                // console.log(data.length);
+
+                var i = 0;
+
+                data.forEach((item, index) => {
+
+                    var flag = 0;
+
+                    while (item.login_ID != author_data[i].login_ID) {
+                        i++;
+
+                        if (author_data[i] == undefined) {
+                            i = 0;
+                            flag++
+                        }
+
+                        if (flag > 1) {
+                            return;
+                        }
                     }
-                })
-                .select('name , github_ID , profile_img , login_ID')
-                .exec(temp = (err, author_data) => {
-
-                    newlist = []
-
-                    // console.log(data.length);
-
-                    var i = 0;
-
-                    data.forEach((item, index) => {
-
-                        var flag = 0;
-
-                        while (item.login_ID != author_data[i].login_ID) {
-                            i++;
-                            
-                            if (author_data[i] == undefined) {
-                                i = 0;
-                                flag++
-                            }
-
-                            if (flag > 1) {
-                                return;
-                            }
-                        }
 
 
-                        var liked = null
-                        if (req.headers.member_data) {
-                            liked = item.like.includes(req.headers.member_data[0].login_ID)
-                            /// I don't know why in case of postman's request member_data is showing undefined
-                        }
+                    var liked = null
+                    if (req.headers.member_data) {
+                        liked = item.like.includes(req.headers.member_data[0].login_ID)
+                        /// I don't know why in case of postman's request member_data is showing undefined
+                    }
 
 
-                        newlist[index] = {
-                            post_id: item.post_id,
-                            login_ID: item.login_ID,
-                            sequence: item.sequence,
-                            time: item.time,
-                            content: item.content,
-                            media: item.media,
-                            like: item.like.length,
-                            comment: item.comment.length,
-                            liked: liked,
-                            author_name: author_data[i].name,
-                            author_github_ID: author_data[i].github_ID,
-                            author_profile_img: author_data[i].profile_img
-                        }
+                    newlist[index] = {
+                        post_id: item.post_id,
+                        login_ID: item.login_ID,
+                        sequence: item.sequence,
+                        time: item.time,
+                        content: item.content,
+                        media: item.media,
+                        like: item.like.length,
+                        comment: item.comment.length,
+                        liked: liked,
+                        author_name: author_data[i].name,
+                        author_github_ID: author_data[i].github_ID,
+                        author_profile_img: author_data[i].profile_img
+                    }
 
-
-                    });
-                    // console.log(newlist);
-
-
-                    return res.send({ "data": newlist, "sequence": data[data.length - 1].sequence, my_ID: req.headers.member_data[0].login_ID })
 
                 });
-
-        }
-
-
-        var get_news = () => {
-            news_feed.find().sort({ sequence: -1 }).limit(10)
-                .then((data) => {
-
-                    if (data[0]) {
-                        person_detail(data);
-                    } else {
-                        res.send({ "msg": "no more data available" })
-                    }
-
-                    return 0
-
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-        }
-
-        var get_sequential_news = (count) => {
-            news_feed.find({ sequence: { "$lt": count } }).sort({ sequence: -1 }).limit(10)
-                .then((data) => {
-
-                    if (data[0]) {
-                        person_detail(data);
-                    } else {
-                        res.send({ "msg": "no more data available" })
-                    }
+                // console.log(newlist);
 
 
-                    return 0
+                return res.send({ "data": newlist, "sequence": data[data.length - 1].sequence, my_ID: req.headers.member_data[0].login_ID })
 
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-        }
+            });
 
-        if (req.headers.sequence && req.headers.sequence != 0) {
-            get_sequential_news(req.headers.sequence)
-        } else {
-            get_news()
-        }
+    }
+
+
+    var get_news = () => {
+        news_feed.find().sort({ sequence: -1 }).limit(10)
+            .then((data) => {
+
+                if (data[0]) {
+                    person_detail(data);
+                } else {
+                    res.send({ "msg": "no more data available" })
+                }
+
+                return 0
+
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    var get_sequential_news = (count) => {
+        news_feed.find({ sequence: { "$lt": count } }).sort({ sequence: -1 }).limit(10)
+            .then((data) => {
+
+                if (data[0]) {
+                    person_detail(data);
+                } else {
+                    res.send({ "msg": "no more data available" })
+                }
+
+
+                return 0
+
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    if (req.headers.sequence && req.headers.sequence != 0) {
+        get_sequential_news(req.headers.sequence)
+    } else {
+        get_news()
+    }
 
     // }
     // else {
@@ -255,39 +260,47 @@ router.post('/comment', verify, (req, res) => {
     if (req.headers.verified) {
         // console.log(req.body)
 
-        let comment_id = uuid.v4()
+        if (req.body.comment.length < 600 && req.body.comment.length > 1) {
+            let comment_id = uuid.v4()
+            let comment_body = req.body.comment;
 
-        activities.updateOne(
+            comment_body = comment_body.replace('<', '&lt;')
+            comment_body = comment_body.replace('>', '&gt;')
+            comment_body = dompurify.sanitize(marked(comment_body))
 
-            { login_ID: req.headers.member_data[0].login_ID },
-            { $push: { comment: { post_id: req.body.target, comment_id: comment_id } } }
-        )
-            .then((data) => {
-                // console.log(data);
+            activities.updateOne(
 
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+                { login_ID: req.headers.member_data[0].login_ID },
+                { $push: { comment: { post_id: req.body.target, comment_id: comment_id } } }
+            )
+                .then((data) => {
+                    // console.log(data);
 
-        news_feed.updateOne(
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
 
-            { post_id: req.body.target },
-            { $push: { comment: { comment_id: comment_id, author: req.headers.member_data[0].login_ID, data: req.body.comment, time: Date.now(), likes: [] } } }
-        )
-            .then((data) => {
-                // console.log(data);
+            news_feed.updateOne(
 
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+                { post_id: req.body.target },
+                { $push: { comment: { comment_id: comment_id, author: req.headers.member_data[0].login_ID, data: comment_body, time: Date.now(), likes: [] } } }
+            )
+                .then((data) => {
+                    // console.log(data);
 
-        comment_id = undefined
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
 
+            comment_id = undefined
 
+            return res.send({ data: req.body, author: req.headers.member_data[0].name })
+        } else {
+            res.status(400).send({ msg: `word limit not matched! (must be within 2-600)` });
+        }
 
-        return res.send({ data: req.body, author: req.headers.member_data[0].name })
     } else {
         return res.status(401).send("authentication error")
     }
