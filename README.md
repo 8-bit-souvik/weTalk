@@ -98,10 +98,20 @@ This is an inter-college social media application where users can interact to ea
 # Local Environment setup 
 
 
+## Create credentials in [imagekit.io](https://imagekit.io/)
+
+after creating an account go to the [developer option](https://imagekit.io/dashboard/developer) and collect your `URL-endpoint`, `Public Key` and `Private Key`
+
+![imagekit-demo](https://user-images.githubusercontent.com/72222987/150644016-a578b8d4-e211-4578-b2a9-a0a76095a347.png)
+
+
+
 ## dotenv file creation
 
 In this dotenv file all keys and credentials for this web app will be stored.<br/>
 Create a file named `.env` at the root of the directory, then fill these data given below:
+
+<b> Paste your `Public Key`, `Private Key` and `urlEndpoint` which you have collected </b>
 ```
 PORT = '5510'
 passphrase = 'adhguiewhrh89fgrt6wterg23edg'
@@ -109,6 +119,9 @@ JWT_token = '56t3yde8u23g7d6847e823wr623e'
 clientID = 'fcbda448c36edfee295f'
 clientSecret = 'e33eb5206a91d3dbf55f1252d5bf462819b41dda'
 mongoAddress = 'mongodb://localhost:27017/sampleBlog'
+publicKey = <create yourself!>
+privateKey = <create yourself!>
+urlEndpoint = <create yourself!>
 ```
 
 ***if you have any other Mongo DataBase replace the given `mongoAddress` URI with your own.**
