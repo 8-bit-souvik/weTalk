@@ -14,7 +14,7 @@ const news_feed = new mongoose.Schema({
     sequence: { type: Number },
     time: { type: String },
     content: { type: String },
-    media: { type: String },
+    media: {url:{ type: String }, id:{ type: String }},
     like: [],
     comment: [{ comment_id: { type: String }, author: { type: String }, data: { type: String }, time: { type: Number }, likes: [{ type: String }] }]
 });
@@ -27,7 +27,7 @@ news_feed.pre('validate', function (next) {
     if (this.content) {
         this.content = this.content.replace('<', '&lt;')
         this.content = this.content.replace('>', '&gt;')
-        this.content = dompurify.sanitize(marked(this.content))
+        this.content = dompurify.sanitize(marked.parse(this.content))
 
     }
 

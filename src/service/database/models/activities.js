@@ -19,7 +19,7 @@ const activities = new mongoose.Schema({
     posts: [{ type: mongoose.Schema.Types.String, ref: 'news_feed' }],
     liked: [],
     comment: [],
-    limit: { initial_time_stamp: {}, post_count: {} },
+    limit: { initial_time_stamp: {}, post_count: {}, media_auth: {} },
     last_access: { type: String }
 });
 

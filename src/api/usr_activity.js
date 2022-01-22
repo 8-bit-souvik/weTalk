@@ -7,6 +7,7 @@ const slugify = require('slugify')
 const createDomPurify = require('dompurify')
 const { JSDOM } = require('jsdom')
 const dompurify = createDomPurify(new JSDOM().window)
+var ImageKit = require("imagekit");
 
 const verify = require('./../service/verify')
 const activities = require('./../service/database/models/activities')
@@ -25,6 +26,8 @@ router.post('/create', verify, function (req, res) {
     if (req.headers.verified) {
 
         var content = req.body.content;              //content of the body
+        var media = req.body.media;                  //media of the body
+        var mediaId = req.body.mediaId;                  //mediaId of the body
 
         // console.log(`usr_id: ${(req.headers.member_data[0].login_ID)}`);
 
@@ -42,7 +45,7 @@ router.post('/create', verify, function (req, res) {
                     activities.updateOne(
 
                         { login_ID: req.headers.member_data[0].login_ID },
-                        { limit: { initial_time_stamp: Date.now(), post_count: 1 } }
+                        { limit: { initial_time_stamp: Date.now(), post_count: 1, media_auth: 1 } }
                     )
                         .then((data) => {
                             return createPost();
@@ -78,42 +81,48 @@ router.post('/create', verify, function (req, res) {
 
         var createPost = () => {
 
-            if (content.length > 1501) {
-                res.status(400).send({ msg: `word limit exeeded! (${content.length}/1500)` });
-            } else if (content.length < 1) {
-                res.status(400).send({ msg: `too short to post! (${content.length}/1500)` });
+            if (media) {
+                var post = { post_id: uuid.v4(), login_ID: req.headers.member_data[0].login_ID, sequence: Date.now(), time: Date(), content: content, media: { url: media, id: mediaId }, like: [], comment: [] };
+                return uploadData(post);
             } else {
-                var post = { post_id: uuid.v4(), login_ID: req.headers.member_data[0].login_ID, sequence: Date.now(), time: Date(), content: content, media: "", like: [], comment: [] };
-                // console.log(post);
-
-                activities.updateOne(
-
-                    { login_ID: req.headers.member_data[0].login_ID },
-                    { $push: { posts: post.post_id } }
-                )
-                    .then((data) => {
-                        // console.log(data);
-                    })
-                    .catch((err) => {
-                        return console.log(err);
-                    });
-
-
-
-
-                news_feed.create(post)
-
-                    .then((data) => {
-                        // console.log(data);
-                    })
-                    .catch((err) => {
-                        return console.log(err);
-                    })
-
-                return res.status(200).send({ msg: "posted successfully!" });
-
+                if (content.length > 1501) {
+                    res.status(400).send({ msg: `word limit exeeded! (${content.length}/1500)` });
+                } else if (content.length < 1) {
+                    res.status(400).send({ msg: `too short to post! (${content.length}/1500)` });
+                } else {
+                    var post = { post_id: uuid.v4(), login_ID: req.headers.member_data[0].login_ID, sequence: Date.now(), time: Date(), content: content, media: { url: media, id: mediaId }, like: [], comment: [] };
+                    return uploadData(post);
+                }
             }
+        }
 
+        var uploadData = (post) => {
+
+            // console.log(post);
+
+            activities.updateOne(
+
+                { login_ID: req.headers.member_data[0].login_ID },
+                { $push: { posts: post.post_id } }
+            )
+                .then((data) => {
+                    // console.log(data);
+                })
+                .catch((err) => {
+                    return console.log(err);
+                });
+
+
+            news_feed.create(post)
+
+                .then((data) => {
+                    // console.log(data);
+                })
+                .catch((err) => {
+                    return console.log(err);
+                })
+
+            return res.status(200).send({ msg: "posted successfully!" });
         }
 
     }
@@ -185,7 +194,7 @@ router.get('/show', verify, function (req, res) {
                         sequence: item.sequence,
                         time: item.time,
                         content: item.content,
-                        media: item.media,
+                        media: item.media.url,
                         like: item.like.length,
                         comment: item.comment.length,
                         liked: liked,
@@ -469,6 +478,12 @@ router.put('/like', verify, function (req, res) {
 
 router.delete('/delete_post', verify, function (req, res) {
 
+    var imagekit = new ImageKit({
+        publicKey: "public_didX9wfZiv5DrABxZgaKOYmNRuE=",
+        privateKey: "private_SiSX1pyovjEXexQYkM9BgbW+W6A=",
+        urlEndpoint: "https://ik.imagekit.io/weTalk/images"
+    });
+
     if (req.headers.verified) {
 
         post_id = req.headers.post_id
@@ -481,7 +496,7 @@ router.delete('/delete_post', verify, function (req, res) {
                         $in: req.headers.post_id
                     }
                 })
-                .select('login_ID')
+                .select('login_ID , media')
                 .exec(temp = (err, user) => {
 
                     if (user[0]) {
@@ -491,6 +506,12 @@ router.delete('/delete_post', verify, function (req, res) {
                                 if (err) {
                                     return console.log(err)
                                 } else {
+                                    if (user[0].media.id) {
+                                        imagekit.deleteFile(user[0].media.id).then(response => {
+                                        }).catch(error => {
+                                            console.log(error);
+                                        });
+                                    }
                                     return res.status(200).send({ msg: "post deleted" })
                                 };
 

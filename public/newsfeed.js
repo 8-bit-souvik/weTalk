@@ -2,6 +2,7 @@ var sequence = 0;
 
 
 // const hostURL = 'http://127.0.0.1:5510/'
+// const hostURL = 'http://192.168.1.128:5510/'       //my local network
 const hostURL = 'https://wetalk021.herokuapp.com/'
 
 
@@ -73,7 +74,7 @@ var user = {
         // console.log(Response);
         if (Response.status == 401) {
           window.location.href = '/login'
-      }
+        }
         return Response.json();
       })
       .then((getData) => {
@@ -174,7 +175,15 @@ var user = {
               var content = document.createElement("div");
               content.setAttribute("class", "content");
               content.setAttribute("onclick", "showModal(this)");
-              content.innerHTML = item.content;
+              if (item.media) {
+                media = new Image
+                media.src = item.media
+                media.id = "media-feed"
+                content.innerHTML = `${item.content} <br>`;
+                content.appendChild(media);
+              } else{
+                content.innerHTML = `${item.content}`;
+              }
 
               post.appendChild(content);
 

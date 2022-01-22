@@ -3,7 +3,7 @@ const router = express.Router();
 const usr_sign = require('./../../service/usr_sign')
 const AES = require('crypto-js/aes');
 const jwt = require('jsonwebtoken');
-
+const axios = require('axios')
 
 const passphrase = process.env.passphrase
 const JWT_token = process.env.JWT_token
@@ -16,8 +16,6 @@ const encryptWithAES = (text, passphrase) => {
   return AES.encrypt(text, passphrase).toString();
 };
 
-const axios = require('axios')
-var access_token = ''
 
 router.get('/redirect', (req, res) => {
 
@@ -31,7 +29,7 @@ router.get('/redirect', (req, res) => {
             accept: 'application/json'
         }
     }).then((response) => {
-        access_token = response.data.access_token ? response.data.access_token : access_token
+       let  access_token = response.data.access_token ? response.data.access_token : null
 
 
         if (access_token) {
@@ -41,7 +39,8 @@ router.get('/redirect', (req, res) => {
                 headers: {
                     Authorization: 'token ' + access_token
                 }
-            }).then((response) => {
+            })
+            .then((response) => {
                 const data = response.data
                 usr_sign(data)
                     .then((msg) => {
@@ -76,7 +75,11 @@ router.get('/redirect', (req, res) => {
                         }
                     });
 
-            })
+            }) 
+            .catch((err) => {
+                console.log(err);
+                return 0
+            });
         } else {
             return res.send("<br><br><h2 style='text-align: center'> 401 || Access token not found </h2>")
         }

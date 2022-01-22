@@ -331,16 +331,19 @@ code{
 
 }
 
-#detail  .desc , #post .desc .author .sub-nav .options > div{
+#detail  .desc ,
+ #post .desc .author .sub-nav .options > div{
     padding: 7px;
     cursor: pointer;
 }
 
-#detail  .desc , #post .desc .author .sub-nav .options > div:hover{
+#detail  .desc ,
+ #post .desc .author .sub-nav .options > div:hover{
    background-color: rgb(185, 192, 199);
 }
 
-#detail  .desc , #post .desc .author .sub-nav > img{
+#detail  .desc ,
+ #post .desc .author .sub-nav > img{
 width: 35px;
 position: absolute;
 right: 0px;
@@ -351,7 +354,8 @@ cursor: pointer;
     display: none;
 }
 
-#detail  .desc  .author .sub-nav > img:hover~.options, #post .desc .author .sub-nav > img:hover~.options{
+#detail  .desc  .author .sub-nav > img:hover~.options,
+ #post .desc .author .sub-nav > img:hover~.options{
     display: block;
 }
 
@@ -359,11 +363,13 @@ cursor: pointer;
     display: block;
 }
 
-#detail  .desc .author span , #post .desc .author span{
+#detail  .desc .author span ,
+ #post .desc .author span{
     font-size: 20px;
 }
 
-#detail .interaction, #post .interaction{
+#detail .interaction,
+ #post .interaction{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -373,7 +379,21 @@ cursor: pointer;
     
 }
 
-#detail .interaction div, #post .interaction div{
+#post .content{
+    display: flex;
+    flex-direction: column;
+}
+
+#post #media-feed{
+    align-self: center ;
+    max-width: 100%;
+    max-height: 500px;
+    box-shadow: rgb(164, 164, 164) 1px 1px 15px;
+}
+
+
+#detail .interaction div,
+ #post .interaction div{
        background-color: rgb(184, 209, 221);
        width: 20%;
        padding: 5px 0;
@@ -383,7 +403,8 @@ cursor: pointer;
        gap: 6px;
 }
 
-#detail .interaction div:hover, #post .interaction div:hover{
+#detail .interaction div:hover,
+ #post .interaction div:hover{
     background-color: rgb(177, 206, 219);
     cursor: pointer;
 }
@@ -541,6 +562,41 @@ cursor: pointer;
 }
 .custom-file-input:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+}
+
+#background-progress {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    padding-top: 30px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#myProgress {
+    width: 100%;
+    background-color: rgb(171, 201, 238);
+    z-index: 50;
+    position: absolute;
+    top: 40vh;
+    left: 1vh;
+    display: flex;
+    flex-direction: column;
+}
+  
+#plWait{
+    align-self: center;
+}
+
+#myBar {
+    width: 1%;
+    height: 10px;
+    background-color: #064296;
 }
   
 /* Safari */
