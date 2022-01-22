@@ -110,6 +110,8 @@ after creating an account go to the [developer option](https://imagekit.io/dashb
 
 In this dotenv file all keys and credentials for this web app will be stored.<br/>
 Create a file named `.env` at the root of the directory, then fill these data given below:
+
+<b> Paste your `Public Key`, `Private Key` and `urlEndpoint` which you have collected </b>
 ```
 PORT = '5510'
 passphrase = 'adhguiewhrh89fgrt6wterg23edg'
