@@ -478,10 +478,13 @@ router.put('/like', verify, function (req, res) {
 
 router.delete('/delete_post', verify, function (req, res) {
 
+    const publicKey = process.env.publicKey;
+    const privateKey = process.env.privateKey;
+    const urlEndpoint = process.env.urlEndpoint;
     var imagekit = new ImageKit({
-        publicKey: "public_didX9wfZiv5DrABxZgaKOYmNRuE=",
-        privateKey: "private_SiSX1pyovjEXexQYkM9BgbW+W6A=",
-        urlEndpoint: "https://ik.imagekit.io/weTalk/images"
+        publicKey: publicKey,
+        privateKey: privateKey,
+        urlEndpoint: urlEndpoint
     });
 
     if (req.headers.verified) {
