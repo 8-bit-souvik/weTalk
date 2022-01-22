@@ -98,6 +98,14 @@ This is an inter-college social media application where users can interact to ea
 # Local Environment setup 
 
 
+## Create credentials in [imagekit.io](https://imagekit.io/)
+
+after creating an account go to the [developer option](https://imagekit.io/dashboard/developer) and collect your `URL-endpoint`, `Public Key` and `Private Key`
+
+![imagekit-demo](https://user-images.githubusercontent.com/72222987/150644016-a578b8d4-e211-4578-b2a9-a0a76095a347.png)
+
+
+
 ## dotenv file creation
 
 In this dotenv file all keys and credentials for this web app will be stored.<br/>
