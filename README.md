@@ -109,6 +109,9 @@ JWT_token = '56t3yde8u23g7d6847e823wr623e'
 clientID = 'fcbda448c36edfee295f'
 clientSecret = 'e33eb5206a91d3dbf55f1252d5bf462819b41dda'
 mongoAddress = 'mongodb://localhost:27017/sampleBlog'
+publicKey = <create yourself!>
+privateKey = <create yourself!>
+urlEndpoint = <create yourself!>
 ```
 
 ***if you have any other Mongo DataBase replace the given `mongoAddress` URI with your own.**
