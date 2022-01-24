@@ -151,7 +151,7 @@ body {
     color: rgb(86, 86, 86);
 }
 
-#comment-alert-msg{
+#comment-alert-msg {
     height: 1ch;
 }
 
@@ -170,8 +170,8 @@ body {
     cursor: pointer;
 }
 
-   /* The Modal (background) */
-   .del_modal {
+/* The Modal (background) */
+.del_modal {
     display: none;
     position: fixed;
     z-index: 10;
@@ -214,7 +214,7 @@ body {
     border: 1px solid blue;
 }
 
-.del_close{
+.del_close {
     background-color: rgb(25, 60, 130);
     color: #dfdfdf;
 }

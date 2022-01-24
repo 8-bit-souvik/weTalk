@@ -1,16 +1,16 @@
-*{
+* {
     border: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-h1{
+h1 {
     font-size: 30px;
     /* unless this h1 size is showing similar like h3 */
 }
 
-code{
+code {
     font-style: oblique;
     font-weight: 600;
     color: rgb(43, 39, 39);
@@ -24,24 +24,24 @@ code{
 
 ::-webkit-scrollbar {
     width: 4px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+}
 
-.header{
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.header {
     /* display: flex;
     flex-direction: row;
     flex-wrap: nowrap; */
@@ -55,14 +55,15 @@ code{
 }
 
 
-.logo, .searchbox{
+.logo, .searchbox {
     display: flex;
-    align-items: center; 
+    align-items: center;
     margin-left: 25px;
 }
 
-.logo > img{
+.logo img {
     width: 150px;
+    cursor: pointer;
 }
 
 .searchbox * {
@@ -72,21 +73,21 @@ code{
     padding: 0.3% 2%;
 }
 
-.searchbox > button {
+.searchbox>button {
     cursor: pointer;
     border-radius: 0 5px 5px 0;
     background-color: rgb(212, 210, 197);
 }
 
-.searchbox > button:hover{
+.searchbox>button:hover {
     background-color: rgb(226, 224, 208);
 }
 
-.searchbox > button:active{
+.searchbox>button:active {
     background-color: rgb(212, 210, 197);
 }
 
-.icons{
+.icons {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -94,7 +95,7 @@ code{
     /* justify-self: right; */
 }
 
-.icons > div, .icons > a{
+.icons>div, .icons>a {
     display: flex;
     align-items: center;
     height: 100%;
@@ -102,11 +103,11 @@ code{
     cursor: pointer;
 }
 
-.icons > div:hover, .icons > a:hover{ 
+.icons>div:hover, .icons>a:hover {
     background-color: rgb(116, 165, 167);
 }
 
-.body{
+.body {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -114,7 +115,7 @@ code{
     justify-self: center;
 }
 
-.menu{
+.menu {
     width: 25vw;
     height: 100vh;
     background-color: rgb(255, 228, 196);
@@ -124,7 +125,7 @@ code{
     transition-duration: .3s;
 }
 
-.news_feed{
+.news_feed {
     background-color: rgba(165, 165, 165, 0.742);
     width: 50vw;
     height: 95vh;
@@ -136,7 +137,7 @@ code{
     margin-bottom: 5ch;
 }
 
-.extension{
+.extension {
     background-color: #c7c7c7;
     width: 25vw;
     height: 100vw;
@@ -145,7 +146,7 @@ code{
 }
 
 
-.popup_button{
+.popup_button {
     height: 10ch;
     width: 10ch;
     background-color: brown;
@@ -166,18 +167,19 @@ code{
     font-weight: 600;
     font-size: larger;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border-bottom:1px rgb(170, 170, 170) solid;
+    border-bottom: 1px rgb(170, 170, 170) solid;
 
 }
 
-.menu a div:hover{
-    background-color: rgb(199, 199, 199);;
+.menu a div:hover {
+    background-color: rgb(199, 199, 199);
+    ;
     border-radius: 10px;
 }
 
 
 
-.menu > a> div >span{
+.menu>a>div>span {
     background-color: rgba(197, 63, 39, 0);
     font-size: 15px;
     color: rgb(214, 40, 40);
@@ -189,11 +191,11 @@ code{
     /* filter: drop-shadow(0, 0, 15px, rgb(128, 11, 11)); */
 }
 
-.menu .collapsible{
+.menu .collapsible {
     display: none;
 }
 
-#detail, #post{
+#detail, #post {
     background-color: rgb(248, 248, 248);
     padding: 2% 5%;
     border-radius: 10px;
@@ -202,7 +204,7 @@ code{
     /* width: 100%; */
 }
 
-#notify, #about{
+#notify, #about {
     background-color: rgb(235, 235, 235);
     padding: 2% 5%;
     border-radius: 5px;
@@ -211,38 +213,38 @@ code{
     cursor: pointer;
 }
 
-#notify:hover{
+#notify:hover {
     background-color: rgb(216, 216, 216);
 }
 
-#about .desc{
+#about .desc {
     padding-bottom: 3ch;
 }
 
-#about .desc .summary{
-       font-size: 20px;
-       font-weight: 700;
-       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-       text-align: center;
-       padding-bottom: 5px;
+#about .desc .summary {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding-bottom: 5px;
 }
 
 
 
 
 
-#about .desc .detail{
+#about .desc .detail {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
 }
 
-#about .links{
+#about .links {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-#about .links a{
+#about .links a {
     /* background-color: rgb(54, 54, 99); */
     background-color: rgb(114, 134, 172);
     color: cornsilk;
@@ -255,23 +257,23 @@ code{
     text-decoration: none;
 }
 
-#about .links a:hover{
+#about .links a:hover {
     background-color: rgb(89, 89, 145);
 }
 
-#detail  .desc , 
-#post .desc{
+#detail .desc,
+#post .desc {
     margin-bottom: 15px;
 }
 
-#detail  .desc ,
+#detail .desc,
 #post .desc .author {
     display: flex;
     align-items: center;
     position: relative;
 }
 
-#post .desc .author .author_profile{
+#post .desc .author .author_profile {
     display: flex;
     align-items: center;
     position: relative;
@@ -279,19 +281,20 @@ code{
     text-decoration: none;
     color: rgb(0, 0, 0);
 }
-#post .desc .author .author_profile:hover{
-    color: rgb(96, 56, 24); 
+
+#post .desc .author .author_profile:hover {
+    color: rgb(96, 56, 24);
 }
 
 
-#detail  .desc ,
-#post .desc .time{
-       margin-left: 55px;
-       font-size: 14px;
-       color: rgb(77, 77, 77);
+#detail .desc,
+#post .desc .time {
+    margin-left: 55px;
+    font-size: 14px;
+    color: rgb(77, 77, 77);
 }
 
-#notify .desc .time{
+#notify .desc .time {
     font-size: 14px;
     color: rgb(77, 77, 77);
 }
@@ -305,12 +308,12 @@ code{
     gap: 2ch;
 }
 
-#notify .content{
+#notify .content {
     padding-top: 5px;
     color: rgb(65, 65, 65);
 }
 
-#detail  .desc , #post .desc .author .author_profile > img{
+#detail .desc, #post .desc .author .author_profile>img {
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -319,74 +322,74 @@ code{
     cursor: pointer;
 }
 
-#detail  .desc ,
-#post .desc .author .sub-nav .options{
-   background-color: rgb(207, 211, 211);
-   border-radius: 5px;
-   padding: 5px 0;
-   position: absolute;
-   right: 0px;
-   top:30px;
-   box-shadow: rgb(80, 80, 80) 0px 2px 5px;
+#detail .desc,
+#post .desc .author .sub-nav .options {
+    background-color: rgb(207, 211, 211);
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    right: 0px;
+    top: 30px;
+    box-shadow: rgb(80, 80, 80) 0px 2px 5px;
 
 }
 
-#detail  .desc ,
- #post .desc .author .sub-nav .options > div{
+#detail .desc,
+#post .desc .author .sub-nav .options>div {
     padding: 7px;
     cursor: pointer;
 }
 
-#detail  .desc ,
- #post .desc .author .sub-nav .options > div:hover{
-   background-color: rgb(185, 192, 199);
+#detail .desc,
+#post .desc .author .sub-nav .options>div:hover {
+    background-color: rgb(185, 192, 199);
 }
 
-#detail  .desc ,
- #post .desc .author .sub-nav > img{
-width: 35px;
-position: absolute;
-right: 0px;
-cursor: pointer;
+#detail .desc,
+#post .desc .author .sub-nav>img {
+    width: 35px;
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
 }
 
-.options{
+.options {
     display: none;
 }
 
-#detail  .desc  .author .sub-nav > img:hover~.options,
- #post .desc .author .sub-nav > img:hover~.options{
+#detail .desc .author .sub-nav>img:hover~.options,
+#post .desc .author .sub-nav>img:hover~.options {
     display: block;
 }
 
-.options:hover{
+.options:hover {
     display: block;
 }
 
-#detail  .desc .author span ,
- #post .desc .author span{
+#detail .desc .author span,
+#post .desc .author span {
     font-size: 20px;
 }
 
 #detail .interaction,
- #post .interaction{
+#post .interaction {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 20px;
     padding-top: 10px;
     border-top: 1px rgb(165, 165, 165) solid;
-    
+
 }
 
-#post .content{
+#post .content {
     display: flex;
     flex-direction: column;
 }
 
-#post #media-feed{
+#post #media-feed {
     margin-top: 1ch;
-    align-self: center ;
+    align-self: center;
     max-width: 100%;
     max-height: 500px;
     box-shadow: rgb(164, 164, 164) 1px 1px 15px;
@@ -394,47 +397,47 @@ cursor: pointer;
 
 
 #detail .interaction div,
- #post .interaction div{
-       background-color: rgb(184, 209, 221);
-       width: 20%;
-       padding: 5px 0;
-       border-radius: 7px;
-       display: flex;
-       justify-content: center;
-       gap: 6px;
+#post .interaction div {
+    background-color: rgb(184, 209, 221);
+    width: 20%;
+    padding: 5px 0;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
 }
 
 #detail .interaction div:hover,
- #post .interaction div:hover{
+#post .interaction div:hover {
     background-color: rgb(177, 206, 219);
     cursor: pointer;
 }
 
-.new_post{
+.new_post {
     /* width: 90%; */
     height: 37em;
     background-color: rgb(172, 200, 224);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    box-shadow: slategrey 0 2px 10px ;
+    box-shadow: slategrey 0 2px 10px;
     /* align-items: center; */
 }
 
-.new_post > .headline{
-       height: 4ch;
-       border-bottom: 1px slategray solid;
-       font-size: larger;
-       font-weight: 600;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       position: relative;
+.new_post>.headline {
+    height: 4ch;
+    border-bottom: 1px slategray solid;
+    font-size: larger;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 
 
-.new_post > .headline a{
+.new_post>.headline a {
     position: absolute;
     right: 0;
     padding: 10px 20px;
@@ -444,18 +447,19 @@ cursor: pointer;
     text-decoration: none;
 }
 
-.new_post > .headline a:hover{
+.new_post>.headline a:hover {
     background-color: rgb(165, 185, 204);
 }
 
 
-.new_post > .author img{
+.new_post>.author img {
     height: 40px;
     width: 40px;
     border-radius: 50%;
     margin: 0 20px 0 40px;
 }
-.new_post > .author{
+
+.new_post>.author {
     display: flex;
     align-items: center;
     font-size: larger;
@@ -464,7 +468,7 @@ cursor: pointer;
     padding: 10px 0;
 }
 
-.new_post > .textarea{
+.new_post>.textarea {
     width: 90%;
     height: 15em;
     border-radius: 10px;
@@ -475,24 +479,24 @@ cursor: pointer;
     outline: none;
 }
 
-.new_post > .additionals{
-     height: 4em;
-     background-color: rgb(149, 179, 209);
-     width: 90%;
-     align-self: center;
-     border-radius: 10px;
-     display: flex;
-     justify-content: space-around;
-     align-items: center;
+.new_post>.additionals {
+    height: 4em;
+    background-color: rgb(149, 179, 209);
+    width: 90%;
+    align-self: center;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.new_post > .additionals >div  img{
+.new_post>.additionals>div img {
     cursor: pointer;
     padding: 0 10px;
 
 }
 
-.new_post > button{
+.new_post>button {
     width: 90%;
     height: 4ch;
     align-self: center;
@@ -503,17 +507,17 @@ cursor: pointer;
     font-weight: 700;
 }
 
-.new_post > button:hover{
+.new_post>button:hover {
     background-color: rgb(54, 119, 184);
     color: white;
     cursor: pointer;
 }
 
-.prev_comments{
+.prev_comments {
     min-height: 40vh;
 }
 
-.loader_area{
+.loader_area {
     display: flex;
     justify-content: center;
     padding-bottom: 70px;
@@ -526,7 +530,8 @@ cursor: pointer;
     border-top: 5px solid #155a87;
     width: 50px;
     height: 50px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
     animation: spin 2s linear infinite;
 }
 
@@ -535,9 +540,11 @@ cursor: pointer;
 .custom-file-input {
     color: transparent;
 }
+
 .custom-file-input::-webkit-file-upload-button {
     visibility: hidden;
 }
+
 .custom-file-input::before {
     content: 'Select some files';
     color: black;
@@ -555,14 +562,17 @@ cursor: pointer;
     font-weight: 700;
     font-size: 10pt;
 }
+
 .custom-file-input:hover::before {
     border-color: black;
 }
+
 .custom-file-input:active {
     outline: 0;
 }
+
 .custom-file-input:active::before {
-    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 
 #background-progress {
@@ -589,8 +599,8 @@ cursor: pointer;
     display: flex;
     flex-direction: column;
 }
-  
-#plWait{
+
+#plWait {
     align-self: center;
 }
 
@@ -599,46 +609,57 @@ cursor: pointer;
     height: 10px;
     background-color: #064296;
 }
-  
+
 /* Safari */
 @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
-  
+
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 
 
 @media only screen and (max-width: 800px) {
-    .extension{
+    .extension {
         display: none;
     }
-    .news_feed{
+
+    .news_feed {
         width: 75vw;
-   }
+    }
 
-   .menu{
-     width: 225px;
-     position: absolute;
-     z-index: 10;
-     left:-225px;
-   }
+    .menu {
+        width: 225px;
+        position: absolute;
+        z-index: 10;
+        left: -225px;
+    }
 
-   .menu a div {
-       padding: 15px;
-   }
+    .menu a div {
+        padding: 15px;
+    }
 
-    .menu .collapsible{
+    .menu .collapsible {
         background-color: khaki;
         height: 40px;
         width: 40px;
         border-radius: 30%;
         border: 1px rgb(75, 75, 75) solid;
-        box-shadow: rgb(92, 92, 92) 0 0 10px ;
+        box-shadow: rgb(92, 92, 92) 0 0 10px;
         position: absolute;
         top: 10px;
         right: -55px;
@@ -647,27 +668,30 @@ cursor: pointer;
         justify-content: center;
         cursor: pointer;
     }
-   }
+}
 
-  @media only screen and (max-width: 600px) {
-    .searchbox{
+@media only screen and (max-width: 600px) {
+    .searchbox {
         display: none;
     }
-    .menu{
+
+    .menu {
         width: 200px;
     }
-    .news_feed{
+
+    .news_feed {
         width: 100vw;
         left: 0;
         padding: 10px;
-   }
-   .logo > img{
-    width: 100px;
-}
+    }
 
-.logo{ 
-    margin-left: 8px;
+    .logo>img {
+        width: 100px;
+    }
+
+    .logo {
+        margin-left: 8px;
+    }
 }
-  }
 
 /* post  */
