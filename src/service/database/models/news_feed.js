@@ -1,11 +1,6 @@
 const { type } = require('express/lib/response');
 const mongoose = require('mongoose');
 const connection = require('./../utill/database');
-const marked = require('marked')
-const slugify = require('slugify')
-const createDomPurify = require('dompurify')
-const { JSDOM } = require('jsdom')
-const dompurify = createDomPurify(new JSDOM().window)
 
 const news_feed = new mongoose.Schema({
 
@@ -19,20 +14,7 @@ const news_feed = new mongoose.Schema({
     comment: [{ comment_id: { type: String }, author: { type: String }, data: { type: String }, time: { type: Number }, likes: [{ type: String }] }]
 });
 
-news_feed.pre('validate', function (next) {
-    // if (this.title) {
-    //     this.slug = slugify(this.title, { lower: true, strict: true })
-    // }
 
-    if (this.content) {
-        this.content = this.content.replace('<', '&lt;')
-        this.content = this.content.replace('>', '&gt;')
-        this.content = dompurify.sanitize(marked.parse(this.content))
-
-    }
-
-    next()
-})
 
 
 const News_feed = connection.model('News_feeds', news_feed);

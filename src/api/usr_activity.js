@@ -29,100 +29,111 @@ router.post('/create', verify, function (req, res) {
         var media = req.body.media;                  //media of the body
         var mediaId = req.body.mediaId;                  //mediaId of the body
 
-        // console.log(`usr_id: ${(req.headers.member_data[0].login_ID)}`);
-
-        activities
-            .find({
-                'login_ID': {
-                    $in: req.headers.member_data[0].login_ID
-                }
-            })
-            .select('limit')
-            .exec(temp = (err, data) => {
-
-                if (Date.now() - data[0].limit.initial_time_stamp > 43200000) {
-
-                    activities.updateOne(
-
-                        { login_ID: req.headers.member_data[0].login_ID },
-                        { limit: { initial_time_stamp: Date.now(), post_count: 1, media_auth: 1 } }
-                    )
-                        .then((data) => {
-                            return createPost();
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                        });
-
-                } else if (data[0].limit.post_count < 5) {
-                    activities.updateOne(
-
-                        { login_ID: req.headers.member_data[0].login_ID },
-                        { $set: { "limit.post_count": data[0].limit.post_count + 1 } }
-                    )
-                        .then((data) => {
-                            return createPost();
-                        })
-                        .catch((err) => {
-                            return console.log(err);
-                        });
-                } else {
-
-                    var time_remains = 43200 - ((Date.now() - data[0].limit.initial_time_stamp) / 1000)
-                    var time_remains_hrs = Math.floor(time_remains / 3600)
-                    var time_remains_min = Math.floor((time_remains % 3600) / 60)
-                    var time_remains_sec = Math.floor((time_remains % 3600) % 60)
-
-                    return res.status(403).send({ msg: "maximum post limit per 12hr exceeded (5). " + `remaining time ${time_remains_hrs}:${time_remains_min}:${time_remains_sec}` });
-
-                }
-            })
-
-
-        var createPost = () => {
-
-            if (media) {
-                var post = { post_id: uuid.v4(), login_ID: req.headers.member_data[0].login_ID, sequence: Date.now(), time: Date(), content: content, media: { url: media, id: mediaId }, like: [], comment: [] };
-                return uploadData(post);
-            } else {
-                if (content.length > 1501) {
-                    res.status(400).send({ msg: `word limit exeeded! (${content.length}/1500)` });
-                } else if (content.length < 1) {
-                    res.status(400).send({ msg: `too short to post! (${content.length}/1500)` });
-                } else {
-                    var post = { post_id: uuid.v4(), login_ID: req.headers.member_data[0].login_ID, sequence: Date.now(), time: Date(), content: content, media: { url: media, id: mediaId }, like: [], comment: [] };
-                    return uploadData(post);
-                }
-            }
+        if (content) {
+            content = content.replace('<', '&lt;')
+            content = content.replace('>', '&gt;')
+            content = content.replace('\n', '<br>')
+            content = dompurify.sanitize(marked.parse(content))
         }
 
-        var uploadData = (post) => {
+        if (content != undefined && media != undefined && mediaId != undefined ) {
+            // console.log(`usr_id: ${(req.headers.member_data[0].login_ID)}`);
 
-            // console.log(post);
-
-            activities.updateOne(
-
-                { login_ID: req.headers.member_data[0].login_ID },
-                { $push: { posts: post.post_id } }
-            )
-                .then((data) => {
-                    // console.log(data);
+            activities
+                .find({
+                    'login_ID': {
+                        $in: req.headers.member_data[0].login_ID
+                    }
                 })
-                .catch((err) => {
-                    return console.log(err);
-                });
+                .select('limit')
+                .exec(temp = (err, data) => {
 
+                    if (Date.now() - data[0].limit.initial_time_stamp > 43200000) {
 
-            news_feed.create(post)
+                        activities.updateOne(
 
-                .then((data) => {
-                    // console.log(data);
+                            { login_ID: req.headers.member_data[0].login_ID },
+                            { limit: { initial_time_stamp: Date.now(), post_count: 1, media_auth: 1 } }
+                        )
+                            .then((data) => {
+                                return createPost();
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            });
+
+                    } else if (data[0].limit.post_count < 25) {
+                        activities.updateOne(
+
+                            { login_ID: req.headers.member_data[0].login_ID },
+                            { $set: { "limit.post_count": data[0].limit.post_count + 1 } }
+                        )
+                            .then((data) => {
+                                return createPost();
+                            })
+                            .catch((err) => {
+                                return console.log(err);
+                            });
+                    } else {
+
+                        var time_remains = 43200 - ((Date.now() - data[0].limit.initial_time_stamp) / 1000)
+                        var time_remains_hrs = Math.floor(time_remains / 3600)
+                        var time_remains_min = Math.floor((time_remains % 3600) / 60)
+                        var time_remains_sec = Math.floor((time_remains % 3600) % 60)
+
+                        return res.status(403).send({ msg: "maximum post limit per 12hr exceeded (5). " + `remaining time ${time_remains_hrs}:${time_remains_min}:${time_remains_sec}` });
+
+                    }
                 })
-                .catch((err) => {
-                    return console.log(err);
-                })
 
-            return res.status(200).send({ msg: "posted successfully!" });
+
+            var createPost = () => {
+
+                if (media) {
+                    var post = { post_id: uuid.v4(), login_ID: req.headers.member_data[0].login_ID, sequence: Date.now(), time: Date(), content: content, media: { url: media, id: mediaId }, like: [], comment: [] };
+                    return uploadData(post);
+                } else {
+                    if (content.length > 1501) {
+                        res.status(400).send({ msg: `word limit exeeded! (${content.length}/1500)` });
+                    } else if (content.length < 1 || content == '' || content == ' <br>' || content == '<br>') {
+                        res.status(400).send({ msg: `too short to post! (${content.length}/1500)` });
+                    } else {
+                        var post = { post_id: uuid.v4(), login_ID: req.headers.member_data[0].login_ID, sequence: Date.now(), time: Date(), content: content, media: { url: media, id: mediaId }, like: [], comment: [] };
+                        return uploadData(post);
+                    }
+                }
+            }
+
+            var uploadData = (post) => {
+
+                // console.log(post);
+
+                activities.updateOne(
+
+                    { login_ID: req.headers.member_data[0].login_ID },
+                    { $push: { posts: post.post_id } }
+                )
+                    .then((data) => {
+                        // console.log(data);
+                    })
+                    .catch((err) => {
+                        return console.log(err);
+                    });
+
+
+                news_feed.create(post)
+
+                    .then((data) => {
+                        // console.log(data);
+                    })
+                    .catch((err) => {
+                        return console.log(err);
+                    })
+
+                return res.status(200).send({ msg: "posted successfully!" });
+            }
+        } else {
+            return res.status(403).send({ msg: "inclompete data" })
         }
 
     }
@@ -269,16 +280,19 @@ router.post('/comment', verify, (req, res) => {
     if (req.headers.verified) {
         // console.log(req.body)
 
-        if (req.body.comment.length < 600 && req.body.comment.length > 1) {
-            let comment_id = uuid.v4()
-            let comment_body = req.body.comment;
+        if (req.body.comment) {
+            var comment_body = req.body.comment;
 
             comment_body = comment_body.replace('<', '&lt;')
             comment_body = comment_body.replace('>', '&gt;')
+            comment_body = comment_body.replace('\n', '<br>')
             comment_body = dompurify.sanitize(marked.parse(comment_body))
+        }
+
+        if (comment_body && comment_body.length < 600 && comment_body.length > 1) {
+            let comment_id = uuid.v4()
 
             activities.updateOne(
-
                 { login_ID: req.headers.member_data[0].login_ID },
                 { $push: { comment: { post_id: req.body.target, comment_id: comment_id } } }
             )
