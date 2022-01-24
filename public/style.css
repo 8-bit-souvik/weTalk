@@ -385,6 +385,7 @@ cursor: pointer;
 }
 
 #post #media-feed{
+    margin-top: 1ch;
     align-self: center ;
     max-width: 100%;
     max-height: 500px;

@@ -275,7 +275,7 @@ router.post('/comment', verify, (req, res) => {
 
             comment_body = comment_body.replace('<', '&lt;')
             comment_body = comment_body.replace('>', '&gt;')
-            comment_body = dompurify.sanitize(marked(comment_body))
+            comment_body = dompurify.sanitize(marked.parse(comment_body))
 
             activities.updateOne(
 

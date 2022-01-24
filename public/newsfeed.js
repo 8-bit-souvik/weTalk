@@ -175,14 +175,13 @@ var user = {
               var content = document.createElement("div");
               content.setAttribute("class", "content");
               content.setAttribute("onclick", "showModal(this)");
+
+              content.innerHTML = `${item.content}`;
               if (item.media) {
                 media = new Image
                 media.src = item.media
                 media.id = "media-feed"
-                content.innerHTML = `${item.content} <br>`;
                 content.appendChild(media);
-              } else{
-                content.innerHTML = `${item.content}`;
               }
 
               post.appendChild(content);

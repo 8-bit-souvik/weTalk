@@ -184,14 +184,15 @@
             var file = document.getElementById("file");
 
             if (file.files[0]) {
+                move()
                 imagekit.upload({
                     file: file.files[0],
                     fileName: "img.jpg"
                 }, function (err, result) {
                     if (err) {
                         console.log(err);
+                        document.querySelector("#background-progress").style.display = 'none';
                         document.querySelector(".warning_msg").innerHTML = err.msg;
-                        document.querySelector("#background-progress").style.display = 'none'
                     } else{
                     // console.log(result);
                     // console.log(arguments);
@@ -210,10 +211,10 @@
                 let data = { content: content, media: '', mediaId: '' }
 
                 if (content.length < 1501 && content.length > 1) {
+                    move()
                     user.upload_data(data)
                 } else {
                     setTimeout(clearAlert, 2500)
-                    document.querySelector("#background-progress").style.display = 'none'
                     document.querySelector(".warning_msg").innerHTML = `<p style="color:brown; text-align: center">word limit not matched! (must be within 2-600)</p>`
                 }
 
@@ -259,7 +260,6 @@
         e.preventDefault()
         let content = document.querySelector("#input").value
         user.post(content)
-        move()
     });
 </script>
 
