@@ -1,3 +1,9 @@
+// const hostURL = 'http://127.0.0.1:5510/'                        // localhost
+const hostURL = 'http://192.168.1.128:5510/'                    // my LAN
+// const hostURL = 'https://wetalk021.herokuapp.com/'              // production
+
+
+
 document.querySelector(".collapsible").addEventListener("click", function () {
     var navbar = document.querySelector(".menu");
     if (navbar.style.left == '0px') {
@@ -23,5 +29,5 @@ document.querySelector(".sub-navs").addEventListener("click", function () {
 
 
 document.querySelector(".logoimage").addEventListener("click", function () {
-window.location.href = "/home"
+    window.location.href = "/home"
 })
