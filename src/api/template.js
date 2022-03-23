@@ -29,8 +29,8 @@ router.get('/home', verify, function (req, res) {
         return res.render('pages/home', { userData: req.headers.member_data[0], myProfileLink: `https://github.com/${req.headers.member_data[0].github_ID}` });
          
     } else {
-        // return res.render('pages/home', { userData: req.headers.member_data[0], myProfileLink: `https://wetalk021.herokuapp.com/login` });
-        return res.redirect('/login')
+        return res.render('pages/home', { userData: req.headers.member_data[0], myProfileLink: `https://wetalk021.herokuapp.com/login` });
+        // return res.redirect('/login')
     }
 });
 
