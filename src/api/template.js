@@ -48,7 +48,7 @@ router.get('/new_post', verify, function (req, res) {
 
 router.get('/about', verify, function (req, res) {
     // if (req.headers.verified) {
-        return res.render('pages/about', { userData: req.headers.member_data[0] });
+        return res.render('pages/about', { userData: req.headers.member_data[0], myProfileLink: `https://wetalk021.herokuapp.com/login` });
          
     // } else {
     //      return res.redirect('/login')
