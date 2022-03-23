@@ -26,10 +26,10 @@ router.get('/login', verify, function (req, res) {
 router.get('/home', verify, function (req, res) {
     // console.log(req.headers.member_data);
     if (req.headers.verified) {
-        return res.render('pages/home', { userData: req.headers.member_data[0], myProfileLink: `https://github.com/${req.headers.member_data[0].github_ID}` });
+        return res.render('pages/home', { userData: req.headers.member_data[0], myProfileLink: `https://github.com/${req.headers.member_data[0].github_ID}`, state: "LogOut", stateurl: "/logout" });
          
     } else {
-        return res.render('pages/home', { userData: req.headers.member_data[0], myProfileLink: `https://wetalk021.herokuapp.com/login` });
+        return res.render('pages/home', { userData: req.headers.member_data[0], myProfileLink: `https://wetalk021.herokuapp.com/login`, state: "LogIn", stateurl: "/login"  });
         // return res.redirect('/login')
     }
 });
@@ -47,12 +47,12 @@ router.get('/new_post', verify, function (req, res) {
 
 
 router.get('/about', verify, function (req, res) {
-    // if (req.headers.verified) {
-        return res.render('pages/about', { userData: req.headers.member_data[0], myProfileLink: `https://wetalk021.herokuapp.com/login` });
+    if (req.headers.verified) {
+        return res.render('pages/about', { userData: req.headers.member_data[0], myProfileLink: `https://wetalk021.herokuapp.com/login`, state: "LogOut", stateurl: "/logout" });
          
-    // } else {
-    //      return res.redirect('/login')
-    // }
+    } else {
+        return res.render('pages/about', { userData: req.headers.member_data[0], myProfileLink: `https://wetalk021.herokuapp.com/login`, state: "LogIn", stateurl: "/login" });
+    }
 });
 
 
