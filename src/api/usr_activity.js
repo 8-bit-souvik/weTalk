@@ -62,7 +62,7 @@ router.post('/create', verify, function (req, res) {
                                 console.log(err);
                             });
 
-                    } else if (data[0].limit.post_count < 25) {
+                    } else if (data[0].limit.post_count < 5) {
                         activities.updateOne(
 
                             { login_ID: req.headers.member_data[0].login_ID },
