@@ -1,0 +1,45 @@
+<section class="menu">
+    <div class="collapsible"><img id="arrow" src="/public/icons/angle-right-solid.svg" height="30px"
+            alt="arrow">
+    </div>
+
+    <a href="/home">
+        <% if (highlight == 'home') { %>
+            <div style="  background-color: rgb(211, 188, 170); border-radius: 10px;">Home</div>
+        <% } %>
+
+        <% if (highlight != 'home') { %>
+            <div>Home</div>
+        <% } %>
+    </a>
+
+
+    <a href="/about">
+        <% if (highlight == 'about') { %>
+            <div style="  background-color: rgb(211, 188, 170); border-radius: 10px;">About</div>
+        <% } %>
+
+        <% if (highlight != 'about') { %>
+            <div>About</div>
+        <% } %>
+
+    </a>
+
+    <a href="<%= myProfileLink %>">
+        <div>My Account</div>
+    </a>
+
+    <% if (verified) { %>
+        <a href="/logout">
+            <div>logout</div>
+        </a>
+    <% } %>
+
+    <% if (!verified) { %>
+        <a href="/login">
+            <div>login</div>
+        </a>
+    <% } %>
+
+
+</section>

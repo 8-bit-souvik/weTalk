@@ -1,0 +1,51 @@
+<div id="myModal" class="modal">
+
+
+    <div class="modal-content">
+        <div class="close_exp">X</div>
+        <p>.</p>
+        <br>
+
+
+        <div class="exp_content">
+            <div class="exp_post">
+                <br>
+                <div id="post" class="extp">
+
+                </div>
+                <br>
+            </div>
+            <div class="exp_other">
+                <br>
+                <div class="new_comment">
+                    <div class="exp_author">
+                        <div class="exp_author_img"><img src="<%= userData.profile_img %>" height="35px" width="35px"
+                                style="border-radius: 50%; border: 1px rgb(142, 142, 142) solid;">
+                        </div>
+                        <div class="exp_author_name">
+                            <%= userData.name %>
+                        </div>
+                    </div>
+                    <div class="new_comment_box">
+                        <textarea class="write_new_comment" placeholder="write comment"></textarea>
+                        <img class="post_new_comment" src="/public/icons/post_comment.png" height="25px">
+                    </div>
+                    <div id="comment-alert-msg"></div>
+                </div>
+
+                <br>
+                <div class="loader_area">
+                    <div class="loader"></div>
+                </div>
+
+                <div class="prev_comments">
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
