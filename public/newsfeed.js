@@ -1,11 +1,6 @@
 var sequence = 0;
 
 
-    // const hostURL = 'http://127.0.0.1:5510/'                        // localhost
-    // const hostURL = 'http://192.168.1.128:5510/'                    // my LAN
-    const hostURL = 'https://wetalk021.herokuapp.com/'              // production
-
-
 var user = {
   like: (e) => {
     // console.log(`liked: ${e.firstChild.src}`);
